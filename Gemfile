@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby '2.6.2'
-# change to 2.6.2 for Azure!!!!!!
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -27,14 +25,18 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# gem 'jquery-rails'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # gem 'bcrypt-ruby', '3.1.0', :require => 'bcrypt'
   # gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
-gem 'ed25519', '~> 1.2'
-gem 'bcrypt_pbkdf', '~> 1'
+# gem 'ed25519', '~> 1.2'
+# gem 'bcrypt_pbkdf', '~> 1'
 
 
 gem 'devise'
