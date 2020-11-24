@@ -3,7 +3,7 @@
     <% if @user.avatar.attached? %>
         <%= image_tag(@user.avatar, class:'userImage') %>
     <% else %>
-        <img class="userImage" src="/assets/userImage.png" alt="userImage">
+        <%= image_tag asset_path('userImage.png'), class: 'userImage', alt: 'User Avatar'%>
     <% end %>
     
     <div class="nameBox">
