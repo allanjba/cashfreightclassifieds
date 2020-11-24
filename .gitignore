@@ -36,3 +36,6 @@
 /config/credentials.yml.enc
 
 Readme-descriptions.md
+
+# For deployment ruby error
+Gemfile.lock
