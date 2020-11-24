@@ -24,7 +24,7 @@
 }
 /* load message */
 #bg-load-message{
-  background-color: rgb(0 0 0 / 36%);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
   left: 0;
