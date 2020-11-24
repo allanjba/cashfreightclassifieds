@@ -1,0 +1,551 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+
+  /* aplication styles */
+  #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+/* load message */
+#bg-load-message{
+  background-color: rgb(0 0 0 / 36%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#load-message{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5000;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.website {
+    font-size: 15px;
+    color: #DCD410;
+}
+
+#search {
+    width: 75%;
+    height: 50%;
+    margin-top: 4%;
+    margin-right: 10%;
+    margin-left: 2%;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    position: absolute;
+    top: 5%;
+    right: 1%;
+}
+
+.linkIcon {
+    margin-top: 8px;
+}
+
+#ads {
+    display: flex;
+    justify-content: center;
+}
+
+#learnMoreContainer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#learnMore2 {
+    width: 70%;
+}
+
+h2.ui.header {
+    margin-left: 5%;
+}
+  
+
+/* details  */
+
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+  height: 80%;
+}
+
+#learnMoreContainer {
+  display: flex;
+  justify-content: center;
+  width: 200px; 
+}
+
+.adContainer {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-left: 5%;
+  /* margin-top: 4%; */
+  width: 65%;
+  flex-direction: column;
+}
+
+.adContainer img{
+  max-height: 600px;
+}
+#adDetail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#detailCard {
+  width: 95%!important;
+}
+
+#adSidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#adsContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 30%;
+}
+
+#sidebarAd {
+  padding: 0;
+}
+
+#recentAds {
+  width: 60%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  height: fit-content;
+}
+
+h4.ui.header {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.ui.header {
+  position: relative;
+  margin-bottom: 2%;
+}
+
+.sub.header {
+  position: absolute;
+  left: 0;
+}
+
+.extra.content {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+}
+
+.meta {
+  font-size: 15px!important;
+  margin: 5px 0 5px 0;
+}
+
+.ui.large.header {
+  margin-top: 60%;
+  line-height: 35px;
+}
+
+.mini.button {
+  /* position: absolute; */
+  bottom: 0;
+  right: 0;
+}
+
+.sponsoredAdDesc {
+  margin: 30px 0 30px 0!important;
+  line-height: 30px;
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+  #adsContainer {
+      width: 100%;
+  }
+  .infoContainer {
+      margin-top: 5%;
+      display: block;
+      margin-left: 0;
+  }
+  .adContainer {
+      margin-top: 10%;
+      margin-left: 0;
+      width: 100%;
+  }
+  #adSidebar {
+      flex-direction: row;
+      margin-top: 5%;
+  }
+  .ui.card {
+      margin: 0;
+  }
+  #adsContainer {
+      margin-top: 10%;
+  }
+  #recentAds {
+      width: 75%;
+  }
+  #sidebarCard {
+      margin: 0 5% 0 5%;
+  }
+  #learnMoreContainer {
+      width: 100%;
+      height: 10%;
+  }
+  #learnMore {
+      width: 80%;
+  }
+  .ui.large.header {
+      margin-top: 0;
+  }
+  .sponsoredAdDesc {
+      margin: 0;
+      line-height: 0;
+  }
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) { 
+  #adsContainer {
+      width: 100%;
+  }
+  .infoContainer {
+      margin-top: 5%;
+      display: block;
+      margin-left: 0;
+  }
+  .adContainer {
+      margin-top: 10%;
+      margin-left: 0;
+      width: 100%;
+  }
+  #adSidebar {
+      flex-direction: row;
+      margin-top: 5%;
+  }
+  .ui.card {
+      margin: 0;
+  }
+  #adsContainer {
+      margin-top: 10%;
+  }
+  #recentAds {
+      width: 75%;
+  }
+  #sidebarCard {
+      margin: 0 5% 0 5%;
+  }
+  #learnMoreContainer {
+      width: 100%;
+      height: 10%;
+  }
+  #learnMore {
+      width: 80%;
+  }
+  .ui.large.header {
+      margin-top: 0;
+  }
+  .sponsoredAdDesc {
+      margin: 0;
+      line-height: 0;
+  }
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+  #adsContainer {
+      width: 100%;
+  }
+  .infoContainer {
+      margin-top: 5%;
+      display: block;
+      margin-left: 0;
+  }
+  .adContainer {
+      margin-top: 10%;
+      margin-left: 0;
+      width: 100%;
+  }
+  #adSidebar {
+      flex-direction: row;
+      margin-top: 5%;
+  }
+  .ui.card {
+      margin: 0;
+  }
+  #adsContainer {
+      margin-top: 10%;
+  }
+  #recentAds {
+      width: 75%;
+  }
+  #sidebarCard {
+      margin: 0 5% 0 5%;
+  }
+  #learnMoreContainer {
+      width: 100%;
+      height: 10%;
+  }
+  #learnMore {
+      width: 80%;
+  }
+  .ui.large.header {
+      margin-top: 0;
+  }
+  .sponsoredAdDesc {
+      margin: 0;
+      line-height: 0;
+  }
+}
+
+
+/* profile */
+
+.profile {
+  width: 80%;
+  height: fit-content;
+  margin: 4% auto;
+  background-color: #E2E2E2;
+  position: relative;
+  border-radius: 5px;
+  padding-bottom: 50px;
+}
+
+.userImage {
+  position: absolute;
+  width: 200px;
+  right: -54px;
+  top: -40px;
+  border-radius: 100px;
+}
+.upload-avatar {
+  cursor: pointer;
+  z-index: 20000;
+}
+#avatar-field {
+  display: none;
+}
+.avatar-form{
+  position: relative;
+  z-index: 1000;
+}
+
+.ui.form.segment {
+  width: 50%;
+  margin: auto;
+}
+
+#price-imput {
+  position: relative;
+}
+#price-imput span {
+  position: absolute;
+  top: 10px;
+  left: 6px;
+}
+
+
+.nameBox {
+  margin-left: 75px;
+  padding-top: 40px;
+}
+
+.name {
+  font-size: 28px;
+}
+
+.email {
+  font-size: 18px;
+}
+
+.infoBox {
+  width: 90%;
+  padding: 5%;
+  margin-left: 18%;
+  padding-bottom: 1%;
+  margin-top: 1%;
+}
+
+.plus.circle.icon {
+  position: absolute;
+  width: 250px;
+  right: 0;
+  /* top: 240px; */
+  font-size: 35px;
+  color: green;
+}
+
+label {
+  font-size: 15px!important;
+}
+
+.address {
+  margin-top: 20px!important;
+}
+
+.myListings {
+  width: 90%;
+  margin-left: 5%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.listingTitle {
+  margin-left: 2%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#card {
+  width: 140px;
+  margin-top: 20px;
+  margin-bottom: 2%;
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+  .userImage {
+      position: relative;
+      margin-left: 250px;
+  }
+  .nameBox {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .name {
+      font-size: 60px;
+  }
+  #email {
+      margin-top: 20px;
+  }
+  .field {
+      margin-bottom: 40px!important;
+  }
+  .myListings {
+      margin-top: 40px;
+  }
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) { 
+  .userImage {
+      position: relative;
+      margin-left: 250px;
+  }
+  .nameBox {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+  .name {
+      font-size: 60px;
+  }
+  #email {
+      margin-top: 20px;
+  }
+  .field {
+      margin-bottom: 40px!important;
+  }
+  .myListings {
+      margin-top: 40px;
+  }
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+  .userImage {
+      position: relative;
+      margin-left: 250px;
+  }
+  .nameBox {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+}

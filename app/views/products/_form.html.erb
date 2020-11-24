@@ -1,0 +1,81 @@
+
+<% if @product.images.count > 0 %>
+    <% @product.images.each do |image| %>
+        <%= image_tag tiny(image) %>
+        <%= link_to 'Remove', delete_image_attachment_product_url(image.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+<% end %>
+
+
+<%= form_with(model: product, local: true,  class: 'ui form segment') do |form| %>
+    <h1>Create Listing</h1>
+    <!-- Errors -->
+    <% if product.errors.any? %>
+        <div id="error_explanation" class="ui error message" style="display: block;">
+        <div class="header"><%= pluralize(product.errors.count, "error") %> keeping this listing from being saved:</div>
+
+        <ul class="list">
+        <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+<!-- End erros -->
+    <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div class="field">
+        <%= form.label :price %>
+        <div id='price-imput'>
+            <span>$</span><%= form.text_field :price, onkeypress: 'return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))'%>
+        </div>
+    </div>
+    <div class="field">
+        <label>Photos</label>
+        <div class="photos">
+            <div class="container">
+                <%= form.label :images %>
+                <%= form.file_field :images, multiple: true %>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Category</label>
+        <div class="ui fluid selection dropdown" tabindex="0">
+            <input type="hidden" name="categories">
+            <i class="dropdown icon"></i>
+            <div class="default text">Category</div>
+            <div class="menu transition hidden" tabindex="-1">
+                <div class="item" data-value="trucks">
+                    Trucks
+                </div>
+                <div class="item" data-value="trailers">
+                    Trailers
+                </div>
+                <div class="item" data-value="tires">
+                    Tires
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <div id="contact-info" class="field">
+        <label style="margin-top: 2%;">Contact Info</label>
+        <div class="contact-info"><%= current_user.first_name %> <%= current_user.last_name %></div>
+        <div class="contact-info"><%= current_user.phone %></div>
+        <div class="contact-info"><%= current_user.email %></div>
+        <div style="margin-bottom: 2%;" class="contact-info"><%= "#{current_user.city}, #{current_user.state}, #{current_user.zipcode}"  %></div>
+    </div>
+    <div class="inline field">
+        <div class="ui checkbox">
+        <input name="terms" type="checkbox">
+        <label>I agree to the terms and conditions</label>
+    </div>
+    </div>
+    <%= form.submit 'Create Listing', class: 'ui floated primary submit button'%>
+<% end %>

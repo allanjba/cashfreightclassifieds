@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cashfreightclassifieds</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+ 
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header" class="ui blue inverted segment">
+      <div class="logo">
+          <img src="/assets/cashfreightlogo.png" alt="cashFreightLogo">
+          <a class="website" href="<%= root_path%>">cashfreight.com</a>
+      </div>
+      <div id="search" class="ui fluid left icon input">
+          <i class="search link icon"></i>
+          <input type="search" placeholder="Search...">
+      </div>
+      <div class="icons">
+          <div class="linkIcon">
+              <i class="envelope icon"></i>
+          </div>
+          <div class="linkIcon">
+              <i class="bell icon"></i>
+          </div>
+          <div id="menu" class="ui inverted icon top left pointing dropdown button">
+              <i class="bars icon"></i>
+              <div class="menu">
+                  <div class="header">Menu</div>
+                  <div class="item">Recent Searches</div>
+
+                  <!-- only if logged in -->
+                  <% if current_user%>
+                    <div class="item"><%= link_to 'New Listing', new_product_path %></div>
+                    <div class="item">My Listings</div>
+                    <div class="item">My Watch List</div>
+                    <div class="ui divider"></div>
+                    <div class="item"><%= link_to 'Profile', current_user %></div>
+                  <% end %>
+                  
+                  
+                  <div class="item">Settings</div>
+                  <div class="item">Help</div>
+                  <div class="item">
+                    <% if user_signed_in? %>
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>    
+                      <% else %>
+                        <%= link_to('Login', new_user_session_path) %>  
+                      <% end %>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end Header -->
+
+  <% unless notice.nil? %>
+    <div class="ui positive message" style="max-width: 500px; margin: 20px auto; ">
+      <p id="notice"><%= notice %></p>
+    </div>
+  <%end%>
+
+
+    <%= yield %>
+
+    <div id="bg-load-message">
+      <div id="load-message" class="ui icon message">
+        <i class="notched circle loading icon"></i>
+        <div class="content">
+          <div class="header">
+            Just one momment
+          </div>
+          <p>We're fetching that content for you.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

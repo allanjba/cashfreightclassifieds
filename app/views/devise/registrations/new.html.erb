@@ -1,0 +1,71 @@
+<div class="logo">
+  <div>
+      <img src="/assets/cashfreightlogo.png" alt="cashfreightlogo">
+  </div>
+  <div>
+      <div>
+          <span class="cashfreight">CashFreight</span>
+      </div>
+      <div>
+          <span class="classifieds">Classifieds</span>
+      </div>
+  </div>
+</div>
+
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'ui form segment' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "Username" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "Email" %>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autocomplete: "First Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autocomplete: "Last Name" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, autocomplete: "Phone Number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="inline field">
+    <div class="ui checkbox">
+      <input name="terms" type="checkbox">
+      <label>I agree to the terms and conditions</label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'ui right floated primary submit button' %>
+  </div>
+<% end %>
+<p>
+  Already have an account? <span style="margin-left: 10px;"><%= render "devise/shared/links" %></span>
+</p>

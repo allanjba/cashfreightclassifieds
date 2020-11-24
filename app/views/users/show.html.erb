@@ -1,0 +1,69 @@
+<div class="profile">
+    <!-- check to see if user has avatar -->
+    <% if @user.avatar.attached? %>
+        <%= image_tag(@user.avatar, class:'userImage') %>
+    <% else %>
+        <img class="userImage" src="/assets/userImage.png" alt="userImage">
+    <% end %>
+    
+    <div class="nameBox">
+        <div id="name">
+            <span class="name"><%= @user.first_name %> <%= @user.last_name %></span>
+            <% if @user == current_user %>
+                <%= link_to 'Edit my profile',  edit_user_path(@user) %>
+            <% end %>
+        </div>
+        <div id="email"><span class="email"><%= @user.username %></span></div>
+    </div>
+    <div class="infoBox"><form id="userInfo" class="ui form">
+    <div class="field">
+        <label>Address</label>
+        <div class="field">
+            <div class="twelve wide field address">
+                <div>12345 Cash Freight Lane</div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="twelve wide field address">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="four wide field">
+            <label>State</label>
+            <div class="address">UT</div>
+        </div>
+        <div class="four wide field">
+            <label>Zip Code</label>
+            <div class="address">12345</div>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="six wide field">
+            <label>Phone Number</label>
+            <div class="address">1234567890</div>
+        </div>
+        <div class="six wide field">
+            <label>Cell Number</label>
+            <div class="address">1234567890</div>
+        </div>
+    </div>
+</form></div>
+    <div class="myListings">
+        <h4 class="listingTitle">My Listings:</h4>
+            <% @user.products.each do |product| %>
+
+                <div id="card" onclick="viewAd(1)" class="ui card">
+
+                        <%= link_to image_tag(product.images.first), product, class: 'image' %>
+
+                    <div>
+                        <div><%= product.title %></div>
+                        <div><%= product.price %></div>
+                    </div>
+                </div>
+
+            <% end %>
+        </div>
+</div>

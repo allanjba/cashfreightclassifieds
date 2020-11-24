@@ -1,0 +1,79 @@
+
+
+    <!-- #<% @product.images.each do |image| %>
+        #<%= image_tag thumb(image)%>
+    #<% end %> -->
+<div class="infoContainer">
+
+    <div id="learnMoreContainer">
+        <div id="learnMore" class="ui center aligned yellow inverted segment">
+            <div class="ui large header">
+                Reach More Buyers Today.
+            </div>
+            <p class="sponsoredAdDesc">With our sponsored ads, sellers are more likely to reach their sale faster.</p>
+            <div class="ui blue button">Learn More</div>
+        </div>
+    </div>
+
+    <div class="adContainer">
+            <div id="adDetail" class="ui link cards">
+            <div id="detailCard" class="ui card">
+                <div class="content">
+                    <div class="ui header"><%= @product.title %>
+                        <div class="meta">
+                            <span>Sold by <%= link_to "#{@product.user.username}" , @product.user %> </span>
+                        </div>
+                        <div class="meta">
+                            <span><%= time_ago_in_words(@product.created_at) %> ago |</span>
+                            <a>Trucks</a>
+                        </div>
+                        <div class="header"><%= number_to_currency(@product.price, :precision => 2) %></div>
+                        <div class="extra content">
+                            <i class="eye icon"></i>
+                            <span><%= @product.views %></span>
+                            <i class="clipboard list icon"></i>
+                            <span>0</span>
+                        </div>
+                        <% if @product.user == current_user%>
+                            <%= link_to 'Delete', @product, method: :delete, class: 'mini ui right floated red button', data: { confirm: 'Are you sure?' } %>
+                            <%= link_to 'Edit', edit_product_path(@product), class: 'mini ui right floated blue button' %>
+                        <% else %>
+                            <button class="mini ui right floated blue button">Contact Seller</button>
+                        <% end %>
+                        
+                    </div>
+                </div>
+                <%= image_tag large(@product.images.first)  %>
+                <div class="content">
+                    <div class="ui header">
+                    Description:
+                    </div>
+                    <p><%= @product.description %></p>
+                </div>
+            </div></div>
+            <a style="margin: 2%;" href="<%= products_path %>">
+                <i class="reply icon"></i>
+                Back to Listings...
+            </a>
+        </div>
+
+    <div id="adsContainer">
+        <div id="recentAds" class="ui center aligned black segment">
+            <h4 class="ui grey header">Most Recent...</h4>
+            <div id="adSidebar">
+                <% @latest.each do |product| %>
+                <div id="sidebarCard" onclick="viewAd(1)" class="ui card">
+                    <a class="image" href=" <%= product.id %>">
+                        <%= image_tag card(product.images.first) %>
+                    </a>
+                    <div id="sidebarAd" class="content">
+                        <div class="ui header"><%= product.title %></div>
+                        <div style="font-size: 15px;" class="header"><%= number_to_currency(product.price, :precision => 2) %></div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+</div>
