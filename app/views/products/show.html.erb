@@ -1,6 +1,8 @@
 
 
-
+    <!-- #<% @product.images.each do |image| %>
+        #<%= image_tag thumb(image)%>
+    #<% end %> -->
 <div class="infoContainer">
 
     <div id="learnMoreContainer">
@@ -41,7 +43,7 @@
                         
                     </div>
                 </div>
-                
+                <%= image_tag large(@product.images.first)  %>
                 <div class="content">
                     <div class="ui header">
                     Description:
@@ -62,7 +64,7 @@
                 <% @latest.each do |product| %>
                 <div id="sidebarCard" onclick="viewAd(1)" class="ui card">
                     <a class="image" href=" <%= product.id %>">
-                        
+                        <%= image_tag card(product.images.first) %>
                     </a>
                     <div id="sidebarAd" class="content">
                         <div class="ui header"><%= product.title %></div>
