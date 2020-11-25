@@ -392,7 +392,7 @@ and (orientation: landscape) {
 
 .ui.form.segment {
   width: 50%;
-  margin: auto;
+  margin: 10px, auto;
 }
 
 #price-imput {

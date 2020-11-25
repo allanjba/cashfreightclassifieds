@@ -13,7 +13,6 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 
 
 //= require_self
@@ -30,13 +29,12 @@ function createAd(name, category, price, location, image, description) {
 }
 
 // avatar
-
-document.getElementById("avatar-field").onchange = function() {
-  document.getElementById("form-avatar").submit();
-  
-};
-
-$('form').submit(function() {
-  $("#bg-load-message").toggle();
-  alert('I hate tomatoes.');
+$('#avatar-field').change(function() {
+  $("#form-avatar").submit();
 });
+
+$("form").on('submit', function() {
+  $("#bg-load-message").toggle();
+});
+
+

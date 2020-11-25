@@ -1,7 +1,7 @@
 <div class="profile">
     <!-- check to see if user has avatar -->
     <% if @user.avatar.attached? %>
-        <%= image_tag(@user.avatar, class:'userImage') %>
+        <%= image_tag( card(@user.avatar), class:'userImage') %>
     <% else %>
         <%= image_tag asset_path('userImage.png'), class: 'userImage', alt: 'User Avatar'%>
     <% end %>
@@ -20,7 +20,7 @@
         <label>Address</label>
         <div class="field">
             <div class="twelve wide field address">
-                <div>12345 Cash Freight Lane</div>
+                <div><%= @user.address %></div>
             </div>
         </div>
         <div class="field">
@@ -32,21 +32,17 @@
     <div class="two fields">
         <div class="four wide field">
             <label>State</label>
-            <div class="address">UT</div>
+            <div class="address"><%= @user.state %></div>
         </div>
         <div class="four wide field">
             <label>Zip Code</label>
-            <div class="address">12345</div>
+            <div class="address"><%= @user.zipcode %></div>
         </div>
     </div>
     <div class="two fields">
         <div class="six wide field">
             <label>Phone Number</label>
-            <div class="address">1234567890</div>
-        </div>
-        <div class="six wide field">
-            <label>Cell Number</label>
-            <div class="address">1234567890</div>
+            <div class="address"><%= @user.phone %></div>
         </div>
     </div>
 </form></div>

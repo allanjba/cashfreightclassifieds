@@ -3,7 +3,7 @@
         <%= form_for(@user, url: user_path, html: {id: "form-avatar"}) do |form| %>
         <label class="upload-avatar">
             <% if @user.avatar.attached? %>
-                <%= image_tag(@user.avatar, class:'userImage') %>
+                <%= image_tag(card(@user.avatar), class:'userImage') %>
             <% else %>
                 <%= image_tag asset_path('userImage.png'), class: 'userImage', alt: 'User Avatar'%>
             <% end %>
@@ -38,8 +38,8 @@
             <%= form.text_field :last_name %>
         </div>
         <div class="twelve wide field">
-            <%= form.label :adress %>
-            <%= form.text_field :adress %>
+            <%= form.label :address %>
+            <%= form.text_field :address %>
         </div>
         <div class="two fields">
             <div class="four wide field">

@@ -15,6 +15,18 @@
 
 <h2>Log in</h2>
 
+
+<% unless notice.nil? %>
+<div class="ui info message" style="max-width: 500px; margin: 20px auto; ">
+  <p id="notice"><%= notice %></p>
+</div>
+<%end%>
+<% unless alert.nil? %>
+<div class="ui warning message" style="max-width: 500px; margin: 20px auto; ">
+  <p id="alert"><%= alert %></p>
+</div>
+<%end%>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'ui form segment' }) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
