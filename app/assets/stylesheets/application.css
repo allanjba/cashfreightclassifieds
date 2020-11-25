@@ -119,6 +119,7 @@ h2.ui.header {
 
 .adContainer img{
   max-height: 600px;
+  width: fit-content;
 }
 #adDetail {
   display: flex;
@@ -127,7 +128,7 @@ h2.ui.header {
 }
 
 #detailCard {
-  width: 95%!important;
+  width: min-content;
 }
 
 #adSidebar {
