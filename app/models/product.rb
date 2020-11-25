@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true
   validates :description, presence: true
-  # validates :images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..6.megabytes }
+  validates :images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..6.megabytes }
 
 
   
