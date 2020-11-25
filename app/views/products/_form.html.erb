@@ -1,14 +1,14 @@
 
-<% if @product.images.count > 0 %>
+<!-- <% if @product.images.count > 0 %>
     <% @product.images.each do |image| %>
         <%= image_tag tiny(image) %>
         <%= link_to 'Remove', delete_image_attachment_product_url(image.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-<% end %>
+<% end %> -->
 
 
 <%= form_with(model: product, local: true,  class: 'ui form segment') do |form| %>
-    <h1>Create Listing</h1>
+    <h1>Listing Details</h1>
     <!-- Errors -->
     <% if product.errors.any? %>
         <div id="error_explanation" class="ui error message" style="display: block;">
