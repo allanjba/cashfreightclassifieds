@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cashfreightclassifieds</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'admin' %>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+ 
+  </head>
+
+  <body>
+    <div class="header">
+        <div class="admin" onclick="select(this)">
+            <span>Admin</span>
+        </div>
+        <a class="title" href="<%= root_path%>">
+            <div>
+                <%= image_tag asset_path('cashfreightlogo.png'), class:'logo', alt: 'cashfreightlogo' %>
+            </div>
+            <div>
+                <div>
+                    <span class="cashfreight">CashFreight</span>
+                </div>
+                <div>
+                    <span class="classifieds">Classifieds</span>
+                </div>
+            </div>
+        </a>
+        <div class="icons">
+            <div id="menu" class="ui icon top right pointing dropdown button">
+                <i class="bars icon"></i>
+                <div class="menu">
+                    <div class="header">Menu</div>
+                    <% if current_user && current_user.admin? %>
+                        <div class="item"><%= link_to 'Dashboard', dashboard_path %></div>
+                    <% end %>
+                    <div class="item">Recent Searches</div>
+                    <div class="item"><%= link_to 'New Listing', new_product_path %></div>
+                    <div class="item">My Listings</div>
+                    <div class="item">My Watch List</div>
+                    <div class="ui divider"></div>
+                    <div class="item"><%= link_to 'Profile', current_user %></div>
+                    <div class="item">Settings</div>
+                    <div class="item">Help</div>
+                    <div class="item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="mainMenu">
+            <div class="ui secondary vertical menu">
+                <%= link_to 'Users', dashboard_users_path, class: 'item'%>
+                <%= link_to 'Categories', dashboard_categories_path, class: 'item'%>
+            </div>
+        </div>
+        
+        <!-- content -->
+        <%= yield %>
+        <!-- end content -->
+        
+    </div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

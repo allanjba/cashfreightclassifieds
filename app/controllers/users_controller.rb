@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_permission, only: [:edit]
 
     def show
         @user = User.find(params[:id])
@@ -18,11 +19,22 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        redirect_to root_path, notice: 'User was deleted permanently'
+    end
+
     private
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username,:address, :city, :state, :zipcode, :phone, :email, :password, :password_confirmation, :avatar)
     end
 
+    def require_permission
+        unless current_user.id == params[:id] || current_user.admin?
+            redirect_to root_path, alert: "You don't have permissions to edit this information"
+        end
+    end
 
 end

@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
         #  needs to add :confirmable
 
-  has_many :products
-  has_one_attached :avatar
+  has_many :products, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
 
   validates :username, presence: true
   validates :email, presence: true
