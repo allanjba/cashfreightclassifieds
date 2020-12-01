@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :categories
   resources :products do
     member do
      delete :delete_image_attachment
