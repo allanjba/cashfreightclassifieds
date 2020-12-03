@@ -7,6 +7,7 @@ gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg_search'
 # figaro is used for env variables
 gem "figaro"
 # Use Puma as the app server
@@ -25,6 +26,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
 
 # gem 'jquery-rails'
 

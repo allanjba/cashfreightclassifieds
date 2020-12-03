@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
     before_action :require_permission, only: [:edit]
 
+
+    
     def show
         @user = User.find(params[:id])
     end
@@ -12,8 +14,12 @@ class UsersController < ApplicationController
     def update
         @user = current_user
         if @user.update(user_params)
-            flash.now[:notice] = 'Your information was saved successfully'
-            render :edit
+            flash.now[:notice] = 'Your information was saved successfully.'
+            if current_user.admin?
+                redirect_to dashboard_users_path, notice: "User's information was saved successfully."
+            else
+                render :edit
+            end
         else
             render :edit
         end
@@ -22,7 +28,7 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         @user.destroy
-        redirect_to root_path, notice: 'User was deleted permanently'
+        redirect_to dashboard_users_path, notice: 'User was deleted permanently'
     end
 
     private
@@ -36,5 +42,7 @@ class UsersController < ApplicationController
             redirect_to root_path, alert: "You don't have permissions to edit this information"
         end
     end
+
+
 
 end

@@ -1,10 +1,6 @@
 class DashboardController < ApplicationController
   before_action :authenticate_admin!
 
-
-
-
-
   def index
    
   end
@@ -14,7 +10,8 @@ class DashboardController < ApplicationController
   end
 
   def categories
-    
+    @categories = Category.all
+    @category = Category.new
   end
 
   private

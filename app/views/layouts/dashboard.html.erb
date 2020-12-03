@@ -38,10 +38,9 @@
                 <i class="bars icon"></i>
                 <div class="menu">
                     <div class="header">Menu</div>
-                    <% if current_user && current_user.admin? %>
+                    <% if current_user.admin? %>
                         <div class="item"><%= link_to 'Dashboard', dashboard_path %></div>
                     <% end %>
-                    <div class="item">Recent Searches</div>
                     <div class="item"><%= link_to 'New Listing', new_product_path %></div>
                     <div class="item">My Listings</div>
                     <div class="item">My Watch List</div>
@@ -55,6 +54,18 @@
         </div>
         </div>
     </div>
+            <!-- notifications -->
+            <% unless notice.nil? %>
+            <div class="ui positive message">
+            <p id="notice"><%= notice %></p>
+            </div>
+        <%end%>
+        <% unless alert.nil? %>
+            <div class="ui warning message" >
+            <p id="alert"><%= alert %></p>
+            </div>
+        <%end%>
+        <!-- end notifications -->
     <div class="content">
         <div class="mainMenu">
             <div class="ui secondary vertical menu">
@@ -62,7 +73,7 @@
                 <%= link_to 'Categories', dashboard_categories_path, class: 'item'%>
             </div>
         </div>
-        
+
         <!-- content -->
         <%= yield %>
         <!-- end content -->

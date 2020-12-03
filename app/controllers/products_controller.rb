@@ -15,15 +15,17 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   def edit
     set_product
+    @categories = Category.all
   end
 
   def create
+    change_categories_imput
     @product = current_user.products.new(product_params)
-    
     if @product.save
       redirect_to @product, notice: 'The product was successfuly created.'
     else
@@ -34,7 +36,9 @@ class ProductsController < ApplicationController
 
   def update
     set_product
+    change_categories_imput
     if @product.update(product_params)
+      
       redirect_to @product, notice: 'The product was successfuly updated.'
     else
       render :edit
@@ -61,9 +65,11 @@ class ProductsController < ApplicationController
 
 
     def product_params
-      params.require(:product).permit(:title, :price, :location, :condition, :description, images: [])
+      params.require(:product).permit(:title, :price, :location, :condition, :description, category_ids: [], images: [])
     end
-
+    def change_categories_imput
+      params[:product][:category_ids] = params[:product][:category_ids][0].split(',')
+    end
     
 
 end

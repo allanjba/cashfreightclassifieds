@@ -1,0 +1,4 @@
+$(".category_name").val('');
+
+$("#container_categories").prepend('<%= j render @category %>');
+$("#category_<%= @category.id %>").hide().fadeIn(500);

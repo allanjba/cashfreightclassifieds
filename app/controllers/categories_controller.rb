@@ -1,15 +1,18 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  layout "dashboard", only: [:edit, :new]
 
   # GET /categories
   # GET /categories.json
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @products = @category.products
   end
 
   # GET /categories/new
@@ -28,11 +31,13 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to dashboard_categories_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -56,7 +61,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to dashboard_categories_path, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

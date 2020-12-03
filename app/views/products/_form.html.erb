@@ -7,7 +7,7 @@
 <% end %> -->
 
 
-<%= form_with(model: product, local: true,  class: 'ui form segment') do |form| %>
+<%= form_with(model: product, local: true,  class: 'ui form segment', id: 'prod-form') do |form| %>
     <h1>Listing Details</h1>
     <!-- Errors -->
     <% if product.errors.any? %>
@@ -43,22 +43,23 @@
     </div>
     <div class="field">
         <label>Category</label>
-        <div class="ui fluid selection dropdown" tabindex="0">
-            <input type="hidden" name="categories">
+        <div class="ui fluid selection dropdown multiple search" tabindex="0">
+        <input type="hidden" name="product[category_ids][]" id="cat-imput"
+        value="<% product.categories.each do |c| %><%= ',' + c.id.to_s %><% end %>">
             <i class="dropdown icon"></i>
+            <% product.categories.each do |populated| %>
+                <a class="ui label transition visible" data-value="<%= populated.id %>" style="display: inline-block !important;"><%= populated.name %><i class="delete icon"></i></a>
+            <% end %>
             <div class="default text">Category</div>
             <div class="menu transition hidden" tabindex="-1">
-                <div class="item" data-value="trucks">
-                    Trucks
-                </div>
-                <div class="item" data-value="trailers">
-                    Trailers
-                </div>
-                <div class="item" data-value="tires">
-                    Tires
-                </div>
+                <% @categories.each do |category| %>
+                    <option class="item <%= "active filtered" if product.categories.include?(category)%>" data-value="<%= category.id%>" >
+                        <%= category.name %>
+                    </option>
+                <% end %>
             </div>
         </div>
+       
     </div>
     <div class="field">
         <%= form.label :description %>

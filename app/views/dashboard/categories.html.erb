@@ -1,8 +1,10 @@
 <div class="categories">
     <h1>Categories</h1>
     <div class="ui mini input">
-        <input type="text" placeholder="Add Category...">
-        <button id="addButton" class="ui primary mini button">Add</button>
+        <%= form_with(model: @category, class: 'ui mini input', )do |form| %>
+            <%= form.text_field :name, placeholder: "Add Category...", class: 'category_name' %>
+            <%= form.submit 'Add', id: 'addButton', class: 'ui primary mini button'%>
+        <% end %>
     </div>
     <table class="ui celled table">
         <thead>
@@ -12,22 +14,8 @@
                 <th>Remove</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-            <td>Trucks</td>
-            <td>24</td>
-            <td><a href="">Remove</a></td>
-            </tr>
-            <tr>
-                <td>Trailers</td>
-                <td>100</td>
-                <td><a href="">Remove</a></td>
-            </tr>
-            <tr>
-                <td>Tires</td>
-                <td>50</td>
-                <td><a href="">Remove</a></td>
-            </tr>
+        <tbody id="container_categories">
+            <%= render @categories %>
         </tbody>
     </table>
 </div>
