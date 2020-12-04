@@ -21,10 +21,12 @@
           <%= image_tag asset_path('cashfreightlogo.png')%>
           <a class="website" href="<%= root_path%>">cashfreight.com</a>
       </div>
-      <div id="search" class="ui fluid left icon input">
-          <i class="search link icon"></i>
-          <input type="search" placeholder="Search...">
-      </div>
+      <form action="/" accept-charset="UTF-8" method="get" id="search" class="ui fluid left icon input">
+        <i class="search link icon"></i>
+          <input name="utf8" type="hidden" value="✓">
+          <input type="text" name="query" id="query" placeholder="Search...">
+          <input type="submit" value="Search" data-disable-with="Search"  style="display: none;">
+      </form>
       <div class="icons">
           <div class="linkIcon">
               <i class="envelope icon"></i>

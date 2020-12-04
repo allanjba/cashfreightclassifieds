@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: %i[:edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search(params[:query])
+      @results = params[:query]
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -38,7 +43,6 @@ class ProductsController < ApplicationController
     set_product
     change_categories_imput
     if @product.update(product_params)
-      
       redirect_to @product, notice: 'The product was successfuly updated.'
     else
       render :edit

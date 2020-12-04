@@ -7,7 +7,13 @@
       <div class="ui blue button">Learn More</div>
   </div>
 </div>
-<h2 class="ui grey header">Most Recent...</h2>
+<h2 class="ui grey header">
+  <% if params[:query].present? %>
+    Searh results for: "<%= params[:query] %>"
+  <% else %>
+    Most Recent
+  <% end %>
+</h2>
 <div class="container">
   <div id="ads" class="ui link cards"></div>
 </div>
