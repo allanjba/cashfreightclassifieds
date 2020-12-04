@@ -29,6 +29,13 @@
         <% end %>
     <!-- End erros -->
 
+        <% if current_user.admin? || current_user.id == 2 %>
+        <div class="twelve wide field">
+            <%= form.label :admin %>
+            <%= form.check_box :admin %>
+        </div>
+        <% end %>
+
         <div class="twelve wide field">
             <%= form.label :first_name %>
             <%= form.text_field :first_name %>
@@ -64,6 +71,7 @@
             <%= form.label :email %>
             <%= form.text_field :email %>
         </div>
+
         <%= form.submit 'Save Changes', class: 'ui primary button' %>
     <% end %>
 </div>

@@ -4,6 +4,7 @@
     <title>Cashfreightclassifieds</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
     <%= stylesheet_link_tag 'admin' %>
     
     
@@ -56,15 +57,19 @@
     </div>
             <!-- notifications -->
             <% unless notice.nil? %>
-            <div class="ui positive message">
-            <p id="notice"><%= notice %></p>
+            <div style="margin: 20px;">
+                <div class="ui positive message">
+                <p id="notice"><%= notice %></p>
+                </div>
             </div>
-        <%end%>
-        <% unless alert.nil? %>
-            <div class="ui warning message" >
-            <p id="alert"><%= alert %></p>
+            <%end%>
+            <% unless alert.nil? %>
+            <div style="margin: 20px;">
+                <div class="ui warning message" >
+                <p id="alert"><%= alert %></p>
+                </div>
             </div>
-        <%end%>
+            <%end%>
         <!-- end notifications -->
     <div class="content">
         <div class="mainMenu">

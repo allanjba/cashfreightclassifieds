@@ -22,15 +22,19 @@
     align-items: center;
     position: relative;
 }
+#menu {
+  z-index: 1001;
+}
 /* load message */
 #bg-load-message{
   background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: none;
+  z-index: 90000;
 }
 #load-message{
   position: absolute;

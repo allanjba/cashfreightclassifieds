@@ -34,11 +34,11 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username,:address, :city, :state, :zipcode, :phone, :email, :password, :password_confirmation, :avatar)
+        params.require(:user).permit(:first_name, :last_name, :username,:address, :city, :state, :zipcode, :phone, :email, :password, :password_confirmation, :avatar, :admin)
     end
 
     def require_permission
-        unless current_user.id == params[:id] || current_user.admin?
+        unless current_user.id == params[:id].to_i || current_user.admin?
             redirect_to root_path, alert: "You don't have permissions to edit this information"
         end
     end
