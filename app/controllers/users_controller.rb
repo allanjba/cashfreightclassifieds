@@ -8,11 +8,15 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = current_user
+        if current_user.admin?
+            @user = User.find(params[:id])
+        else
+            @user = current_user
+        end
     end
 
     def update
-        @user = current_user
+        @user = User.find(params[:id])
         if @user.update(user_params)
             flash.now[:notice] = 'Your information was saved successfully.'
             if current_user.admin?
