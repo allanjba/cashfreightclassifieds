@@ -1,0 +1,4 @@
+$("#favorite_link_<%= @product.id %>").text('<%= favorite_text(@product) %>');
+$("#favorite_link_<%= @product.id %>").prepend("<i class='clipboard list icon'></i> ");
+$("#favorite_span_<%= @product.id %>").toggleClass("saved");
+$("#favorites-size").text("<%= @product.favorites.size %>");

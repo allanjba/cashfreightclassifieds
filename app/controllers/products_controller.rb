@@ -10,12 +10,15 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+  #  add favorites to index
+
   end
 
   def show
     set_product
     @latest = Product.last(3)
     @product.increase_visit
+    @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
   end
 
   def new

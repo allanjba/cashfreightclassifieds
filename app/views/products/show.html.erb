@@ -28,6 +28,9 @@
                             <% @product.categories.each do |categorie| %> 
                                 <%= link_to categorie.name, categorie %>
                             <% end %>
+                            <span id="favorite_span_<%= @product.id%>" class="right floated clipboard list <%= saved_class(@product) %>">
+                                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(@product), favorites_update_path(product: @product), id: "favorite_link_#{@product.id}", remote: true %>
+                            </span>
                             
                         </div>
                         <div class="header"><%= number_to_currency(@product.price, :precision => 2) %></div>
@@ -35,7 +38,7 @@
                             <i class="eye icon"></i>
                             <span><%= @product.views %></span>
                             <i class="clipboard list icon"></i>
-                            <span>0</span>
+                            <span id="favorites-size"><%= @product.favorites.size %></span>
                         </div>
                         <% if @product.user == current_user%>
                             <%= link_to 'Delete', @product, method: :delete, class: 'mini ui right floated red button', data: { confirm: 'Are you sure?' } %>

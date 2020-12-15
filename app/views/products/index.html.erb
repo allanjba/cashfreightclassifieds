@@ -42,10 +42,13 @@
                   <i class="eye icon"></i>
                   <%= product.views %>
               </span>
-              <span class="right floated clipboard list">
-                  <i class="clipboard list icon"></i>
-                  Watch List
+              <span id="favorite_span_<%= product.id%>" class="right floated clipboard list <%= saved_class(product) %>">
+                  <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
               </span>
+
+      
+
+
           </div>
       </div>
     <% end %>

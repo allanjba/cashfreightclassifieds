@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :categories
   has_many_attached :images
+  has_many :favorites
+  has_many :users, through: :favorites
 
   validates :title, presence: true
   validates :price, presence: true

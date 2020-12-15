@@ -6,6 +6,9 @@ class User < ApplicationRecord
         #  needs to add :confirmable
 
   has_many :products, dependent: :destroy
+  has_many :favorites
+  has_many :products, through: :favorites
+  
   has_one_attached :avatar, dependent: :destroy
 
   validates :username, presence: true
@@ -17,4 +20,8 @@ class User < ApplicationRecord
   validates :city, presence: true
 
   validates :avatar, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..6.megabytes }
+
+  def favorited?(product)
+    favorites.find_by(product_id: product.id).present?
+  end
 end
