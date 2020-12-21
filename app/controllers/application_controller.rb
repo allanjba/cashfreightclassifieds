@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
     end
 
     def saved_class(product)
-        return current_user.favorited?(product) ?  "saved" : ""
+        if user_signed_in? 
+            return current_user.favorited?(product) ?  "saved" : ""
+        end
     end
 
 

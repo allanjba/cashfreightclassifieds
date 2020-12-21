@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  get 'watchlist', to: 'watchlist#index'
   get 'favorites/update'
   resources :categories
   resources :products do

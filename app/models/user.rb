@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   has_many :products, dependent: :destroy
   has_many :favorites
-  has_many :products, through: :favorites
   
   has_one_attached :avatar, dependent: :destroy
 

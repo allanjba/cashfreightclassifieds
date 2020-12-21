@@ -9,7 +9,9 @@
 </div>
 <h2 class="ui grey header">
   <% if params[:query].present? %>
-    Searh results for: "<%= params[:query] %>"
+    Search results for: "<%= params[:query] %>"
+  <% elsif @title.present? %>
+    <%= @title %>
   <% else %>
     Most Recent
   <% end %>
@@ -43,7 +45,11 @@
                   <%= product.views %>
               </span>
               <span id="favorite_span_<%= product.id%>" class="right floated clipboard list <%= saved_class(product) %>">
-                  <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
+              <% if user_signed_in? %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
+              <% else %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Whatch List', new_user_session_path %>
+              <% end %>
               </span>
 
       

@@ -10,8 +10,6 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
-  #  add favorites to index
-
   end
 
   def show
