@@ -27,11 +27,7 @@
                             <span><%= time_ago_in_words(@product.created_at) %> ago |</span>
                             <% @product.categories.each do |categorie| %> 
                                 <%= link_to categorie.name, categorie %>
-                            <% end %>
-                            <span id="favorite_span_<%= @product.id%>" class="right floated clipboard list <%= saved_class(@product) %>">
-                                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(@product), favorites_update_path(product: @product), id: "favorite_link_#{@product.id}", remote: true %>
-                            </span>
-                            
+                            <% end %>                           
                         </div>
                         <div class="header"><%= number_to_currency(@product.price, :precision => 2) %></div>
                         <div class="extra content">
@@ -40,11 +36,15 @@
                             <i class="clipboard list icon"></i>
                             <span id="favorites-size"><%= @product.favorites.size %></span>
                         </div>
+                        
                         <% if @product.user == current_user%>
                             <%= link_to 'Delete', @product, method: :delete, class: 'mini ui right floated red button', data: { confirm: 'Are you sure?' } %>
                             <%= link_to 'Edit', edit_product_path(@product), class: 'mini ui right floated blue button' %>
                         <% else %>
                             <button id="contactSeller" class="mini ui right floated blue button">Contact Seller</button>
+                            <span id="favorite_span_<%= @product.id%>" class="mini ui right floated clipboard list <%= saved_class(@product) %>">
+                                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(@product), favorites_update_path(product: @product), id: "favorite_link_#{@product.id}", remote: true %>
+                            </span>
                         <% end %>
                         
                     </div>

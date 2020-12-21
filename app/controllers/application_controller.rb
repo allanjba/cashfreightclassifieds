@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
     end
 
     def favorite_text(product)
-        return current_user.favorited?(product) ?  "Saved" : " Watch List"
+        if user_signed_in? 
+            return current_user.favorited?(product) ?  "Saved" : " Watch List"
+        else
+            " Watch List"
+        end
     end
 
     def saved_class(product)
