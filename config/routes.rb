@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   
-  get 'watchlist', to: 'watchlist#index'
+  get 'my-watchlist', to: 'watchlist#index'
+  get 'my-listings', to: 'mylistings#index'
   get 'favorites/update'
   resources :categories
   resources :products do

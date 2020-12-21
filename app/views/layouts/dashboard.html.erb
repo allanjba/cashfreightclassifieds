@@ -38,20 +38,9 @@
         <div class="icons">
             <div id="menu" class="ui icon top right pointing dropdown button">
                 <i class="bars icon"></i>
-                <div class="menu">
-                    <div class="header">Menu</div>
-                    <% if current_user.admin? %>
-                        <div class="item"><%= link_to 'Dashboard', dashboard_path %></div>
-                    <% end %>
-                    <div class="item"><%= link_to 'New Listing', new_product_path %></div>
-                    <div class="item">My Listings</div>
-                    <div class="item">My Watch List</div>
-                    <div class="ui divider"></div>
-                    <div class="item"><%= link_to 'Profile', current_user %></div>
-                    <div class="item">Settings</div>
-                    <div class="item">Help</div>
-                    <div class="item"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></div>
-                </div>
+                <!-- render partial  _menu.html.erb -->
+                <%= render partial: 'layouts/menu' %>
+                <!-- end render -->
             </div>
         </div>
         </div>
