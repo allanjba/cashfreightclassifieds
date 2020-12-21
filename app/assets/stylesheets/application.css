@@ -21,12 +21,13 @@
  /* end added */
 
 
-  /* aplication styles */
-  #header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+  /* application styles */
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 #menu {
   z-index: 1001;
@@ -86,22 +87,83 @@
     justify-content: center;
 }
 
-#learnMoreContainer2 {
+#learnMoreContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#learnMore2 {
+#learnMore {
     width: 70%;
 }
 
 h2.ui.header {
     margin-left: 5%;
 }
-  
 
-/* details  */
+#menu {
+  margin: 0!important;
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) {
+    #learnMore {
+        width: 90%;
+        padding: 1em;
+    }
+    img {
+        width: 130px;
+    }
+    #search {
+        margin-top: 11%;
+        margin-right: 0;
+    }
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+    #learnMore {
+        width: 90%;
+        padding: 1em;
+    }
+    img {
+        width: 130px;
+    }
+    #search {
+        margin-top: 11%;
+        margin-right: 0;
+    }
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+    #learnMore {
+        width: 90%;
+        padding: 1em;
+    }
+    img {
+        width: 130px;
+    }
+    #search {
+        margin-top: 11%;
+        margin-right: 0;
+    }
+}
+
+/* -------- Detail page styling ----------- */
 
 
 .infoContainer {
@@ -111,7 +173,7 @@ h2.ui.header {
   height: 80%;
 }
 
-#learnMoreContainer {
+#learnMoreContainerDetail {
   display: flex;
   justify-content: center;
   width: 200px; 
@@ -119,18 +181,20 @@ h2.ui.header {
 
 .adContainer {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  margin-left: 5%;
-  /* margin-top: 4%; */
-  width: 65%;
+  margin-left: 6%;
+  margin-top: 4%;
+  width: 52%;
   flex-direction: column;
 }
 
-.adContainer img{
-  max-height: 600px;
-  width: fit-content;
+.adContainer img {
+  max-height: 350px;
+  width: inherit;
+  margin: 0 4%;
 }
+
 #adDetail {
   display: flex;
   justify-content: center;
@@ -138,7 +202,7 @@ h2.ui.header {
 }
 
 #detailCard {
-  width: min-content;
+  width: 92%!important;
 }
 
 #adSidebar {
@@ -164,11 +228,12 @@ h2.ui.header {
 #recentAds {
   width: 60%;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   height: fit-content;
+  padding-top: 50px;
 }
 
 h4.ui.header {
@@ -177,14 +242,9 @@ h4.ui.header {
   left: 5%;
 }
 
-.ui.header {
+#detailMainHeader {
   position: relative;
   margin-bottom: 2%;
-}
-
-.sub.header {
-  position: absolute;
-  left: 0;
 }
 
 .extra.content {
@@ -199,20 +259,35 @@ h4.ui.header {
   margin: 5px 0 5px 0;
 }
 
-.ui.large.header {
+#adDetailHeader {
   margin-top: 60%;
   line-height: 35px;
 }
 
-.mini.button {
-  /* position: absolute; */
-  bottom: 0;
+#contactSeller {
+  position: absolute;
   right: 0;
+  top: 62px;
 }
 
 .sponsoredAdDesc {
   margin: 30px 0 30px 0!important;
   line-height: 30px;
+}
+
+#recentAdsHeader {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ----------- Tablet or Smaller Desktop ----------- */
+
+@media only screen
+and (min-width: 768px)
+and (max-width: 801px) {
+  #detailCard {
+    width: 70%!important;
+  }
 }
 
 /* ----------- iPhone X ----------- */
@@ -222,49 +297,50 @@ h4.ui.header {
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
-  #adsContainer {
-      width: 100%;
-  }
-  .infoContainer {
-      margin-top: 5%;
-      display: block;
-      margin-left: 0;
-  }
-  .adContainer {
-      margin-top: 10%;
-      margin-left: 0;
-      width: 100%;
-  }
-  #adSidebar {
-      flex-direction: row;
-      margin-top: 5%;
-  }
-  .ui.card {
-      margin: 0;
-  }
-  #adsContainer {
-      margin-top: 10%;
-  }
-  #recentAds {
-      width: 75%;
-  }
-  #sidebarCard {
-      margin: 0 5% 0 5%;
-  }
-  #learnMoreContainer {
-      width: 100%;
-      height: 10%;
-  }
-  #learnMore {
-      width: 80%;
-  }
-  .ui.large.header {
-      margin-top: 0;
-  }
-  .sponsoredAdDesc {
-      margin: 0;
-      line-height: 0;
-  }
+    #adsContainer {
+        width: 65%;
+        margin-left: 20%;
+    }
+    .infoContainer {
+        margin-top: 5%;
+        display: block;
+        margin-left: 0;
+    }
+    .adContainer {
+        margin-top: 10%;
+        margin-left: 0;
+        width: 100%;
+    }
+    #adSidebar {
+        flex-direction: row;
+        margin-top: 5%;
+    }
+    .ui.card {
+        margin: 0;
+    }
+    #adsContainer {
+        margin-top: 10%;
+    }
+    #recentAds {
+        width: 90%;
+    }
+    #sidebarCard {
+        margin: 0 5% 0 5%;
+    }
+    #adDetailHeader {
+        margin-top: 0;
+    }
+    .sponsoredAdDesc {
+        margin: 0 0 1em !important;
+        line-height: 1.4285em;
+    }
+    #learnMoreDetail {
+        width: 90%;
+        padding: 1em;
+    }
+    #learnMoreContainerDetail {
+        width: 100%;
+    }
 }
 
 /* Portrait */
@@ -273,49 +349,50 @@ and (min-device-width: 375px)
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) { 
-  #adsContainer {
-      width: 100%;
-  }
-  .infoContainer {
-      margin-top: 5%;
-      display: block;
-      margin-left: 0;
-  }
-  .adContainer {
-      margin-top: 10%;
-      margin-left: 0;
-      width: 100%;
-  }
-  #adSidebar {
-      flex-direction: row;
-      margin-top: 5%;
-  }
-  .ui.card {
-      margin: 0;
-  }
-  #adsContainer {
-      margin-top: 10%;
-  }
-  #recentAds {
-      width: 75%;
-  }
-  #sidebarCard {
-      margin: 0 5% 0 5%;
-  }
-  #learnMoreContainer {
-      width: 100%;
-      height: 10%;
-  }
-  #learnMore {
-      width: 80%;
-  }
-  .ui.large.header {
-      margin-top: 0;
-  }
-  .sponsoredAdDesc {
-      margin: 0;
-      line-height: 0;
-  }
+    #adsContainer {
+        width: 65%;
+        margin-left: 20%;
+    }
+    .infoContainer {
+        margin-top: 5%;
+        display: block;
+        margin-left: 0;
+    }
+    .adContainer {
+        margin-top: 10%;
+        margin-left: 0;
+        width: 100%;
+    }
+    #adSidebar {
+        flex-direction: row;
+        margin-top: 10%;
+    }
+    .ui.card {
+        margin: 0;
+    }
+    #adsContainer {
+        margin-top: 10%;
+    }
+    #recentAds {
+        width: 90%;
+    }
+    #sidebarCard {
+        margin: 0 5% 0 5%;
+    }
+    #adDetailHeader {
+        margin-top: 0;
+    }
+    .sponsoredAdDesc {
+        margin: 0 0 1em !important;
+        line-height: 1.4285em;
+    }
+    #learnMoreDetail {
+        width: 90%;
+        padding: 1em;
+    }
+    #learnMoreContainerDetail {
+        width: 100%;
+    }
 }
 
 /* Landscape */
@@ -324,53 +401,54 @@ and (min-device-width: 375px)
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: landscape) { 
-  #adsContainer {
-      width: 100%;
-  }
-  .infoContainer {
-      margin-top: 5%;
-      display: block;
-      margin-left: 0;
-  }
-  .adContainer {
-      margin-top: 10%;
-      margin-left: 0;
-      width: 100%;
-  }
-  #adSidebar {
-      flex-direction: row;
-      margin-top: 5%;
-  }
-  .ui.card {
-      margin: 0;
-  }
-  #adsContainer {
-      margin-top: 10%;
-  }
-  #recentAds {
-      width: 75%;
-  }
-  #sidebarCard {
-      margin: 0 5% 0 5%;
-  }
-  #learnMoreContainer {
-      width: 100%;
-      height: 10%;
-  }
-  #learnMore {
-      width: 80%;
-  }
-  .ui.large.header {
-      margin-top: 0;
-  }
-  .sponsoredAdDesc {
-      margin: 0;
-      line-height: 0;
-  }
+    #adsContainer {
+        width: 65%;
+        margin-left: 20%;
+    }
+    .infoContainer {
+        margin-top: 5%;
+        display: block;
+        margin-left: 0;
+    }
+    .adContainer {
+        margin-top: 10%;
+        margin-left: 0;
+        width: 100%;
+    }
+    #adSidebar {
+        flex-direction: row;
+        margin-top: 5%;
+    }
+    .ui.card {
+        margin: 0;
+    }
+    #adsContainer {
+        margin-top: 10%;
+    }
+    #recentAds {
+        width: 90%;
+    }
+    #sidebarCard {
+        margin: 0 5% 0 5%;
+    }
+    #adDetailHeader {
+        margin-top: 0;
+    }
+    .sponsoredAdDesc {
+        margin: 0 0 1em !important;
+        line-height: 1.4285em;
+    }
+    #learnMoreDetail {
+        width: 90%;
+        padding: 1em;
+    }
+    #learnMoreContainerDetail {
+        width: 100%;
+    }
 }
 
 
-/* profile */
+/* ----------- Profile ----------- */
 
 .profile {
   width: 80%;
@@ -379,7 +457,6 @@ and (orientation: landscape) {
   background-color: #E2E2E2;
   position: relative;
   border-radius: 5px;
-  padding-bottom: 50px;
 }
 
 .userImage {
@@ -409,12 +486,12 @@ and (orientation: landscape) {
 #price-imput {
   position: relative;
 }
+
 #price-imput span {
   position: absolute;
   top: 10px;
   left: 6px;
 }
-
 
 .nameBox {
   margin-left: 75px;
@@ -437,15 +514,6 @@ and (orientation: landscape) {
   margin-top: 1%;
 }
 
-.plus.circle.icon {
-  position: absolute;
-  width: 250px;
-  right: 0;
-  /* top: 240px; */
-  font-size: 35px;
-  color: green;
-}
-
 label {
   font-size: 15px!important;
 }
@@ -455,16 +523,14 @@ label {
 }
 
 .myListings {
-  width: 90%;
-  margin-left: 5%;
+  width: 70%;
+  margin-left: 15%;
   background-color: white;
   border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  margin-top: 50px;
-  padding: 20px;
 }
 
 .listingTitle {
@@ -487,16 +553,12 @@ label {
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
-  .userImage {
-      position: relative;
-      margin-left: 250px;
-  }
   .nameBox {
-      margin-left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .name {
       font-size: 60px;
@@ -507,8 +569,12 @@ and (-webkit-min-device-pixel-ratio: 3) {
   .field {
       margin-bottom: 40px!important;
   }
-  .myListings {
-      margin-top: 40px;
+  .infoBox {
+      padding: 0;
+      padding-top: 5%;
+  }
+  .profile {
+      height: 160%;
   }
 }
 
@@ -519,8 +585,8 @@ and (max-device-width: 812px)
 and (-webkit-min-device-pixel-ratio: 3)
 and (orientation: portrait) { 
   .userImage {
-      position: relative;
-      margin-left: 250px;
+      top: 20px;
+      right: 50px;
   }
   .nameBox {
       margin-left: 0;
@@ -528,6 +594,55 @@ and (orientation: portrait) {
       justify-content: center;
       align-items: center;
       flex-direction: column;
+  }
+  #name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .name {
+      font-size: 60px;
+      margin-bottom: 20px;
+  }
+  #email {
+      margin-top: 20px;
+  }
+  .field {
+      margin-bottom: 40px!important;
+  }
+  .myListings {
+    margin-left: 2%;
+    width: 75%;
+    flex-direction: column;
+  }
+  .infoBox {
+      display: flex;
+      justify-content: center;
+      margin-left: 10%;
+  }
+  .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .ui.form.segment {
+    width: 80%;
+  }
+}
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+  .nameBox {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .name {
       font-size: 60px;
@@ -539,7 +654,86 @@ and (orientation: portrait) {
       margin-bottom: 40px!important;
   }
   .myListings {
-      margin-top: 40px;
+      margin-top: -35px;
+  }
+  .infoBox {
+      padding: 0;
+      padding-top: 5%;
+  }
+  .profile {
+      height: 160%;
+  }
+}
+
+/* ----------- Edit Profile ----------- */
+
+.editUserImage {
+  position: absolute;
+  width: 200px;
+  right: -54px;
+  top: -40px;
+  border-radius: 100px;
+}
+
+.plus.circle.icon {
+  position: absolute;
+  width: 250px;
+  right: -125px;
+  /* left: 43%; */
+  top: 130px;
+  font-size: 35px;
+  color: green;
+}
+
+.editInfoBox {
+  width: 90%;
+  padding: 5%;
+  margin-left: 15%;
+  padding-bottom: 1%;
+  margin-top: 15%;
+}
+
+#button {
+  margin: 20px 28%!important ;
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) {
+  .plus.circle.icon {
+      position: absolute;
+      left: 340px;
+      top: 220px;
+  }
+}
+
+/* Portrait */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+  .editUserImage {
+      width: 225px;
+      position: initial;
+  }
+  .infoBox {
+      margin-left: 50px;
+  }
+  .plus.circle.icon {
+      position: absolute;
+      left: 40px;
+      top: 180px;
+  }
+  .three.fields {
+    margin-right: 60px!important;
+  }
+  #button {
+    margin: 0 45px!important;
   }
 }
 
@@ -548,16 +742,10 @@ and (orientation: portrait) {
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: landscape) { 
-  .userImage {
-      position: relative;
-      margin-left: 250px;
-  }
-  .nameBox {
-      margin-left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+and (orientation: landscape) {
+  .plus.circle.icon {
+      position: absolute;
+      left: 340px;
+      top: 220px;
   }
 }

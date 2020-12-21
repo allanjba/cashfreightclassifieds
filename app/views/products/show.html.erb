@@ -5,9 +5,9 @@
     #<% end %> -->
 <div class="infoContainer">
 
-    <div id="learnMoreContainer">
-        <div id="learnMore" class="ui center aligned yellow inverted segment">
-            <div class="ui large header">
+    <div id="learnMoreContainerDetail">
+        <div id="learnMoreDetail" class="ui center aligned yellow inverted segment">
+            <div id="adDetailHeader" class="ui large header">
                 Reach More Buyers Today.
             </div>
             <p class="sponsoredAdDesc">With our sponsored ads, sellers are more likely to reach their sale faster.</p>
@@ -19,7 +19,7 @@
             <div id="adDetail" class="ui link cards">
             <div id="detailCard" class="ui card">
                 <div class="content">
-                    <div class="ui header"><%= @product.title %>
+                    <div id="detailMainHeader" class="ui header"><%= @product.title %>
                         <div class="meta">
                             <span>Sold by <%= link_to "#{@product.user.username}" , @product.user %> </span>
                         </div>
@@ -44,14 +44,14 @@
                             <%= link_to 'Delete', @product, method: :delete, class: 'mini ui right floated red button', data: { confirm: 'Are you sure?' } %>
                             <%= link_to 'Edit', edit_product_path(@product), class: 'mini ui right floated blue button' %>
                         <% else %>
-                            <button class="mini ui right floated blue button">Contact Seller</button>
+                            <button id="contactSeller" class="mini ui right floated blue button">Contact Seller</button>
                         <% end %>
                         
                     </div>
                 </div>
                 <%= image_tag large(@product.images.first)  %>
                 <div class="content">
-                    <div class="ui header">
+                    <div id="contentHeader" class="ui header">
                     Description:
                     </div>
                     <p><%= @product.description %></p>
@@ -73,8 +73,8 @@
                         <%= image_tag card(product.images.first) %>
                     </a>
                     <div id="sidebarAd" class="content">
-                        <div class="ui header"><%= product.title %></div>
-                        <div style="font-size: 15px;" class="header"><%= number_to_currency(product.price, :precision => 2) %></div>
+                        <div id="recentAdsHeader" class="ui header"><%= product.title %></div>
+                        <div style="font-size: 12px;" class="header"><%= number_to_currency(product.price, :precision => 2) %></div>
                     </div>
                 </div>
                 <% end %>

@@ -3,9 +3,9 @@
         <%= form_for(@user, url: user_path, html: {id: "form-avatar"}) do |form| %>
         <label class="upload-avatar">
             <% if @user.avatar.attached? %>
-                <%= image_tag(card(@user.avatar), class:'userImage') %>
+                <%= image_tag(card(@user.avatar), class:'editUserImage') %>
             <% else %>
-                <%= image_tag asset_path('userImage.png'), class: 'userImage', alt: 'User Avatar'%>
+                <%= image_tag asset_path('userImage.png'), class: 'editUserImage', alt: 'User Avatar'%>
             <% end %>
             <%= form.file_field :avatar, id: 'avatar-field' %>
             <i class="plus circle icon"></i>
@@ -48,7 +48,7 @@
             <%= form.label :address %>
             <%= form.text_field :address %>
         </div>
-        <div class="two fields">
+        <div class="three fields">
             <div class="four wide field">
                 <%= form.label :city %>
                 <%= form.text_field :city %>
@@ -72,7 +72,7 @@
             <%= form.text_field :email %>
         </div>
 
-        <%= form.submit 'Save Changes', class: 'ui primary button' %>
+        <%= form.submit 'Save Changes', class: 'ui primary button', id: 'button' %>
     <% end %>
 </div>
 </div>
