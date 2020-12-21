@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+
 
 Things you may want to cover:
 
-* Ruby version
+* Database Migrations
 
-* System dependencies
+If there are changes to the database, after a pull request, run this code in the terminal inside the project's folder:
+```
+rails db:migrate
+```
 
-* Configuration
+* Database Password
 
-* Database creation
+Create a file inside the config folder `application.yml`
+*The file database.yml was modified and it is necessary for production*.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Inside the file, you can set the password for development:
+```
+    development:
+        DB_PASSWORD: YourPassword
+```
