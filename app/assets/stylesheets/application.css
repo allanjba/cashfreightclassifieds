@@ -213,7 +213,7 @@ and (orientation: landscape) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
 }
 
 #adsContainer {
@@ -374,7 +374,6 @@ and (-webkit-min-device-pixel-ratio: 3) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 5%;
     }
     .ui.card {
@@ -388,6 +387,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
@@ -426,7 +426,6 @@ and (orientation: portrait) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 10%;
     }
     .ui.card {
@@ -440,6 +439,7 @@ and (orientation: portrait) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
@@ -478,7 +478,6 @@ and (orientation: landscape) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 5%;
     }
     .ui.card {
@@ -492,6 +491,7 @@ and (orientation: landscape) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
