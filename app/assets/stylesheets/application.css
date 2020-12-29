@@ -204,8 +204,6 @@ and (orientation: landscape) {
 #detailCard {
   width: 425px;
   height: 590px;
-  /* max-height: fit-content;
-  width: 92%!important; */
 }
 
 #adSidebar {
@@ -303,7 +301,6 @@ and (max-width: 767px) {
     width: 100%;
 }
 #adSidebar {
-    flex-direction: row;
     margin-top: 10%;
 }
 .ui.card {
