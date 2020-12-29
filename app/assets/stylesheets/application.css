@@ -283,6 +283,8 @@ h4.ui.header {
   margin: 0;
 }
 
+/* ----------- Samsung S / Mobile ----------- */
+
 @media only screen 
 and (min-width: 360px) 
 and (max-width: 767px) {
