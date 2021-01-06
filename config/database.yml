@@ -10,6 +10,7 @@ development:
   <<: *default
   database: cashfreightclassifieds_development
   password: <%= ENV['DB_PASSWORD'] %>
+  
 
 test:
   <<: *default

@@ -193,9 +193,9 @@ and (orientation: landscape) {
 }
 
 .adContainer img {
-  max-height: 350px;
-  width: inherit;
-  margin: 0 4%;
+  max-height: 252px;
+  width: initial;
+  /* margin: 0 4%; */
 }
 
 #adDetail {
@@ -205,7 +205,8 @@ and (orientation: landscape) {
 }
 
 #detailCard {
-  width: 92%!important;
+  width: 425px;
+  height: 590px;
 }
 
 #adSidebar {
@@ -213,7 +214,7 @@ and (orientation: landscape) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
 }
 
 #adsContainer {
@@ -283,6 +284,66 @@ h4.ui.header {
   margin: 0;
 }
 
+/* ----------- Samsung S / Mobile ----------- */
+
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 767px) {
+  #adsContainer {
+    width: 65%;
+    margin-left: 20%;
+}
+.infoContainer {
+    margin-top: 5%;
+    display: block;
+    margin-left: 0;
+}
+.adContainer {
+    margin-top: 10%;
+    margin-left: 0;
+    width: 100%;
+}
+#adSidebar {
+    margin-top: 10%;
+}
+.ui.card {
+    margin: 0;
+}
+#adsContainer {
+    margin-top: 10%;
+}
+#recentAds {
+    width: 90%;
+}
+#sidebarCard {
+    margin: 0 5% 0 5%;
+}
+#adDetailHeader {
+    margin-top: 0;
+}
+.sponsoredAdDesc {
+    margin: 0 0 1em !important;
+    line-height: 1.4285em;
+}
+#learnMoreDetail {
+    width: 90%;
+    padding: 1em;
+}
+#learnMoreContainerDetail {
+    width: 100%;
+}
+#detailCard {
+  width: 340px;
+}
+img {
+  width: 130px;
+}
+#search {
+  margin-top: 11%;
+  margin-right: 0;
+}
+}
+
 /* ----------- Tablet or Smaller Desktop ----------- */
 
 @media only screen
@@ -315,7 +376,6 @@ and (-webkit-min-device-pixel-ratio: 3) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 5%;
     }
     .ui.card {
@@ -329,6 +389,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
@@ -367,7 +428,6 @@ and (orientation: portrait) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 10%;
     }
     .ui.card {
@@ -381,6 +441,7 @@ and (orientation: portrait) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
@@ -419,7 +480,6 @@ and (orientation: landscape) {
         width: 100%;
     }
     #adSidebar {
-        flex-direction: row;
         margin-top: 5%;
     }
     .ui.card {
@@ -433,6 +493,7 @@ and (orientation: landscape) {
     }
     #sidebarCard {
         margin: 0 5% 0 5%;
+        margin-bottom: 20px;
     }
     #adDetailHeader {
         margin-top: 0;
@@ -549,6 +610,62 @@ label {
   margin-bottom: 2%;
 }
 
+/* ----------- Samsung S / Mobile ----------- */
+
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 767px) {
+  .userImage {
+    top: 20px;
+    right: 50px;
+}
+.nameBox {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 240px;
+}
+#name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.name {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+#email {
+    margin-top: 20px;
+}
+.field {
+    margin-bottom: 40px!important;
+}
+.myListings {
+  margin-left: 2%;
+  width: 75%;
+  flex-direction: column;
+}
+.infoBox {
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.ui.form.segment {
+  width: 80%;
+}
+.profile {
+  height: fit-content;
+}
+}
+
 /* ----------- iPhone X ----------- */
 
 /* Portrait and Landscape */
@@ -577,7 +694,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
       padding-top: 5%;
   }
   .profile {
-      height: 160%;
+      height: fit-content;
   }
 }
 
@@ -597,6 +714,7 @@ and (orientation: portrait) {
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      /* padding-top: 40px; */
   }
   #name {
     display: flex;
@@ -698,6 +816,31 @@ and (orientation: landscape) {
 
 #button {
   margin: 20px 28%!important ;
+}
+
+/* ----------- Samsung S / Mobile ----------- */
+
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 767px) {
+  .editUserImage {
+    width: 225px;
+    position: initial;
+}
+.infoBox {
+    margin-left: 50px;
+}
+.plus.circle.icon {
+    position: absolute;
+    left: 40px;
+    top: 180px;
+}
+.three.fields {
+  margin-right: 60px!important;
+}
+#button {
+  margin: 0 25px!important;
+}
 }
 
 /* ----------- iPhone X ----------- */
