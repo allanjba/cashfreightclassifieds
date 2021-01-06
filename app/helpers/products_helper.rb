@@ -14,7 +14,7 @@ def thumb image
 end
 
 def tiny image
-    image
+    image.variant(combine_options: { resize: '50x50^', extent: '50x50', gravity: 'center' }).processed
 end
 
 end

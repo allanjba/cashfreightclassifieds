@@ -20,7 +20,13 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def sender_class(receipt, user)
+        if receipt.id == user.id
+          "room_owner"
+        else
+          "room_user"
+        end
+    end
 
-
-    helper_method :favorite_text, :saved_class
+    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?
 end

@@ -18,6 +18,9 @@
 .saved, .saved a {
   color: #2185d0!important;
 }
+.linkIcon a i {
+  color: white!important;
+}
  /* end added */
 
 

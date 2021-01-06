@@ -1,0 +1,26 @@
+<div id="1" class="fullMessage">
+    <div class="exit" onclick="displayMessage(this)">X</div>
+    <% if from(@conversation, current_user).avatar.attached? %>
+        <%= image_tag( tiny(from(@conversation, current_user).avatar), class:'userImage', style:'border-radius: 25px!important;') %>
+    <% else %>
+        <%= image_tag asset_path('userImage.png'), class: 'userImage', alt: 'User Avatar'%>
+    <% end %>
+    <a class="messageContent">
+        <div class="to">To: <%= current_user.name %></div>
+        <div class="from">From: <%= from(@conversation, current_user).name %></div>
+        <div class="description">Subject: <%= @conversation.subject %> </div>
+    </a>
+    <div class="inboxMessages">
+        <% @conversation.receipts_for(current_user).each do |receipt| %>
+        <div class="conversation <%= sender_class(receipt.message.sender, current_user) %>">
+            <span><%= receipt.message.body %></span>
+        </div>
+        <% end %>
+    </div>
+    <div class="sendMessage">
+        <%= form_tag conversation_messages_path(@conversation), method: :post , remote: true, class: 'ui input' do %>
+            <%= text_area_tag :body, '',  class: 'messageField' %>
+            <%= submit_tag "Send Message", class: 'ui primary button' %>
+        <% end %>
+    </div>
+</div>

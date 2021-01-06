@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 
 
-# messeges
+# messages
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

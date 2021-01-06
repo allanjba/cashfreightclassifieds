@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cashfreightclassifieds</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag 'messages' %>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+ 
+  </head>
+
+  <body>
+    <div class="header">
+        <a class="title" href="<%= root_path%>">
+            <div>
+                <%= image_tag asset_path('cashfreightlogo.png'), class:'logo', alt: 'cashfreightlogo' %>
+            </div>
+            <div>
+                <div>
+                    <span class="cashfreight">CashFreight</span>
+                </div>
+                <div>
+                    <span class="classifieds">Classifieds</span>
+                </div>
+            </div>
+        </a>
+        <div class="icons">
+            <div id="menu" class="ui icon top right pointing dropdown button">
+                <i class="bars icon"></i>
+                <!-- render partial  _menu.html.erb -->
+                <%= render partial: 'layouts/menu' %>
+                <!-- end render -->
+            </div>
+        </div>
+        </div>
+    </div>
+            <!-- notifications -->
+            <% unless notice.nil? %>
+            <div style="margin: 20px;">
+                <div class="ui positive message">
+                <p id="notice"><%= notice %></p>
+                </div>
+            </div>
+            <%end%>
+            <% unless alert.nil? %>
+            <div style="margin: 20px;">
+                <div class="ui warning message" >
+                <p id="alert"><%= alert %></p>
+                </div>
+            </div>
+            <%end%>
+        <!-- end notifications -->
+
+        <div class="messageBoxs">
+        <div class="messages">
+            <div class="messageHeader">Messages</div>
+            <!--<select  class="ui fluid dropdown" name="messageSelect" id="messageSelect" >
+                <option value="inbox">Inbox</option>
+                <option value="outbox">Outbox</option>
+                <option value="trash">Trash</option>
+            </select>-->
+            <div class="messageList">
+                <% @conversations.each do |conversation| %>
+                <div class="ui cards">
+                    <div class="card">
+                        <% if from(conversation, current_user).avatar.attached? %>
+                            <%= image_tag( tiny(from(conversation, current_user).avatar), class:'userImage inbox', style:'border-radius: 25px!important;') %>
+                        <% else %>
+                            <%= image_tag asset_path('userImage.png'), class: 'userImage inbox', alt: 'User Avatar'%>
+                        <% end %>
+                        <a class="messageContent" href="<%= conversation_path(conversation) %>" >
+                            <div class="from">From: <%= from(conversation, current_user).name %> </div>
+                            <div class="description">Subject: <%= conversation.subject %></div>
+                        </a>
+                    </div>
+                </div>
+                <% end %>
+
+
+            </div>
+        </div>
+        <div class="messageDisplay">
+
+         <!-- content -->
+        <%= yield %>
+        <!-- end content -->
+
+        </div>
+    </div>
+        
+    </div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         #  needs to add :confirmable
@@ -9,6 +10,8 @@ class User < ApplicationRecord
   has_many :favorites
   
   has_one_attached :avatar, dependent: :destroy
+
+  acts_as_messageable
 
   validates :username, presence: true
   validates :email, presence: true
@@ -23,4 +26,11 @@ class User < ApplicationRecord
   def favorited?(product)
     favorites.find_by(product_id: product.id).present?
   end
+
+  def name
+    return "#{first_name}" 
+  end
+  def mailboxer_email(object)
+    return email
+   end
 end
