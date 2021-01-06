@@ -11,7 +11,7 @@
         <div class="description">Subject: <%= @conversation.subject %> </div>
     </a>
     <div class="inboxMessages">
-        <% @conversation.receipts_for(current_user).each do |receipt| %>
+        <% @conversation.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
         <div class="conversation <%= sender_class(receipt.message.sender, current_user) %>">
             <span><%= receipt.message.body %></span>
         </div>
