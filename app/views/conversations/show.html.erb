@@ -19,7 +19,7 @@
     </div>
     <div class="sendMessage">
         <!-- add remote true later for ajax-->
-        <%= form_tag conversation_messages_path(@conversation), method: :post , class: 'ui input' do %>
+        <%= form_tag conversation_messages_path(@conversation), method: :post, remote: true , class: 'ui input' do %>
             <%= text_area_tag :body, '',  class: 'messageField' %>
             <%= submit_tag "Send Message", class: 'ui primary button' %>
         <% end %>
