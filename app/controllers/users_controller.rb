@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
     before_action :require_permission, only: [:edit]
 
-
-    
     def show
         @user = User.find(params[:id])
     end
@@ -46,7 +44,5 @@ class UsersController < ApplicationController
             redirect_to root_path, alert: "You don't have permissions to edit this information"
         end
     end
-
-
 
 end

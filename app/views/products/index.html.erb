@@ -27,7 +27,7 @@
     <% @products.each do |product| %>
 
       <div class="ui card">
-            <%= link_to image_tag(card(product.images.first)), product, class: 'image'  %>
+            <%= link_to image_tag(card(product.images.last)), product, class: 'image'  %>
           <div class="content">
               <div class="ui header"><%= product.title %>
                   <div class="sub header"><%= number_to_currency(product.price, :precision => 2) %></div>

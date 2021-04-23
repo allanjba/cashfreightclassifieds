@@ -20,8 +20,9 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
     @categories = Category.all
+    @product = Product.new
+    @product.auctions.build
   end
 
   def edit
@@ -32,8 +33,9 @@ class ProductsController < ApplicationController
   def create
     change_categories_imput
     @product = current_user.products.new(product_params)
+    
     if @product.save
-      redirect_to @product, notice: 'The product was successfuly created.'
+      redirect_to @product, notice: 'Your listing was successfuly created.'
     else
       render :new
     end
@@ -68,10 +70,12 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-
     def product_params
-      params.require(:product).permit(:title, :price, :location, :condition, :description, category_ids: [], images: [])
+      params.require(:product).permit(
+        :title, :price, :location, :condition, :description, :duration, :is_auction, category_ids: [], images: [],
+        :auction_attributes => [:starting_price, :duration, :buy_it_now, :buy_it_now_price])
     end
+ 
     def change_categories_imput
       params[:product][:category_ids] = params[:product][:category_ids][0].split(',')
     end

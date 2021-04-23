@@ -49,7 +49,7 @@
                         
                     </div>
                 </div>
-                <%= image_tag large(@product.images.first) %>
+                <%= image_tag large(@product.images.last) %>
                 <div class="content">
                     <div id="contentHeader" class="ui header">
                     Description:
@@ -70,7 +70,7 @@
                 <% @latest.each do |product| %>
                 <div id="sidebarCard" onclick="viewAd(1)" class="ui card">
                     <a class="image" href=" <%= product.id %>">
-                        <%= image_tag card(product.images.first) %>
+                        <%= image_tag card(product.images.last) %>
                     </a>
                     <div id="sidebarAd" class="content">
                         <div id="recentAdsHeader" class="ui header"><%= product.title %></div>

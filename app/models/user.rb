@@ -7,7 +7,9 @@ class User < ApplicationRecord
         #  needs to add :confirmable
 
   has_many :products, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :shipping_addresses, dependent: :destroy
+  has_many :bids, dependent: :destroy
   
   has_one_attached :avatar, dependent: :destroy
 
@@ -23,6 +25,7 @@ class User < ApplicationRecord
 
   validates :avatar, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..6.megabytes }
 
+
   def favorited?(product)
     favorites.find_by(product_id: product.id).present?
   end
@@ -32,5 +35,7 @@ class User < ApplicationRecord
   end
   def mailboxer_email(object)
     return email
-   end
+  end
+
+
 end

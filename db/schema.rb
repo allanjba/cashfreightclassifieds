@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_221706) do
+ActiveRecord::Schema.define(version: 2021_04_22_205223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2020_12_23_221706) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_id"
+    t.decimal "bid_price", precision: 8, scale: 2
+    t.decimal "bid_increment", precision: 8, scale: 2
+    t.boolean "auto_bid", default: false
+    t.decimal "auto_bid_increment", precision: 8, scale: 2
+    t.decimal "auto_bid_max_price", precision: 8, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bid_price"], name: "index_bids_on_bid_price"
+    t.index ["product_id"], name: "index_bids_on_product_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -120,6 +135,17 @@ ActiveRecord::Schema.define(version: 2020_12_23_221706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "views", default: 0
+    t.boolean "is_auction"
+    t.decimal "auction_starting_price", precision: 8, scale: 2
+    t.string "auction_duration"
+    t.boolean "is_sale"
+    t.decimal "sale_price", precision: 8, scale: 2
+    t.string "shipment_type"
+    t.decimal "shipment_fee", precision: 8, scale: 2
+    t.boolean "active"
+    t.index ["active"], name: "index_products_on_active"
+    t.index ["is_auction"], name: "index_products_on_is_auction"
+    t.index ["is_sale"], name: "index_products_on_is_sale"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -156,6 +182,8 @@ ActiveRecord::Schema.define(version: 2020_12_23_221706) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bids", "products"
+  add_foreign_key "bids", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
