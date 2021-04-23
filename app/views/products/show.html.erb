@@ -62,6 +62,31 @@
                 Back to Listings...
             </a>
         </div>
+        <!-- place bid option -->
+        <% if @product.is_auction %>
+            <div id="auction">
+                <h3>Place a Bid</h3>
+                <p>Current price: <span id="current-price">$<%= @product.current_bid_price %></span></p>
+                <p>Time left: <%= @product.time_remaining%></p>
+                <p><%= @product.closes_at%></p>
+                <!-- show form if user is not the owner or the highest bidder -->
+                <% if current_user != @product.user && current_user != @product.heighest_bidder %> 
+                    <%= form_with(model: @bid, id: 'bid-form' )do |form| %>
+                        <%= form.hidden_field :product_id, value: @product.id %>
+                        <%= form.text_field :bid_price, value: @product.bid_price_plus(1)  %>
+                        <%= form.submit 'Place bid' %>
+                    <% end %>
+                <% elsif current_user == @product.heighest_bidder && current_user != @product.user%>  
+                    <p> You are the highest bidder </p>
+                <% else %>
+                    <p> Your listing has <%= @product.bids.size %> bids</p>
+                <% end %>  
+
+            </div>
+        <%end%>
+        <!-- end of place bid option -->
+<%console%>
+
 
     <div id="adsContainer">
         <div id="recentAds" class="ui center aligned black segment">

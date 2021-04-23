@@ -17,12 +17,12 @@ class ProductsController < ApplicationController
     @latest = Product.last(3)
     @product.increase_visit
     @favorite_exists = Favorite.where(product: @product, user: current_user) == [] ? false : true
+    @bid = Bid.new
   end
 
   def new
     @categories = Category.all
     @product = Product.new
-    @product.auctions.build
   end
 
   def edit
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
   def create
     change_categories_imput
     @product = current_user.products.new(product_params)
-    
+    @categories = Category.all
     if @product.save
       redirect_to @product, notice: 'Your listing was successfuly created.'
     else
@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
 
   def update
     set_product
+    @categories = Category.all
     change_categories_imput
     if @product.update(product_params)
       redirect_to @product, notice: 'The product was successfuly updated.'
@@ -72,8 +73,21 @@ class ProductsController < ApplicationController
 
     def product_params
       params.require(:product).permit(
-        :title, :price, :location, :condition, :description, :duration, :is_auction, category_ids: [], images: [],
-        :auction_attributes => [:starting_price, :duration, :buy_it_now, :buy_it_now_price])
+        :title, 
+        :price, 
+        :location, 
+        :condition, 
+        :description, 
+        :is_auction, 
+        :auction_starting_price, 
+        :auction_duration, 
+        :is_sale, 
+        :sale_price, 
+        :shipment_type, 
+        :shipment_fee,
+        category_ids: [], 
+        images: [], 
+      )
     end
  
     def change_categories_imput

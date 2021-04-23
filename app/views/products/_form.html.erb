@@ -26,12 +26,51 @@
         <%= form.label :title %>
         <%= form.text_field :title %>
     </div>
+
+    <h3>Pricing</h3>
+
+    <div class="inline field">
+        <%= form.check_box :is_auction %>
+        <%= form.label :auction %>
+    </div>
+    <div class=" field">
+        <%= form.label :starting_price %>
+        <%= form.text_field :auction_starting_price %>
+    </div>
+    <div class="field">
+        <%= form.label :auction_duration %>
+        <%= form.text_field :auction_duration %>
+    </div>
+
+    <div class="inline field">
+        <%= form.check_box :is_sale %>
+        <%= form.label :buy_it_now %>
+    </div>
+    <div class=" field">
+        <%= form.label :sale_price %>
+        <%= form.text_field :sale_price %>
+    </div>
+
+    <div class="inline field">
+        <%= form.check_box :no_sale %>
+        <%= form.label :no_sale %>
+    </div>
     <div class="field">
         <%= form.label :price %>
         <div id='price-imput'>
             <span>$</span><%= form.text_field :price, onkeypress: 'return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))'%>
         </div>
     </div>
+    <h3>Shipment Information</h3>
+    <div class=" field">
+        <%= form.label :shipment_type %>
+        <%= form.text_field :shipment_type %>
+    </div>
+    <div class=" field">
+        <%= form.label :shipment_fee %>
+        <%= form.text_field :shipment_fee %>
+    </div>
+    
     <div class="field">
         <label>Photos</label>
         <div class="photos">
@@ -53,9 +92,9 @@
             <div class="default text">Category</div>
             <div class="menu transition hidden" tabindex="-1">
                 <% @categories.each do |category| %>
-                    <option class="item <%= "active filtered" if product.categories.include?(category)%>" data-value="<%= category.id%>" >
-                        <%= category.name %>
-                    </option>
+                <option class="item <%= "active filtered" if product.categories.include?(category)%>" data-value="<%= category.id%>" >
+                    <%= category.name %>
+                </option>
                 <% end %>
             </div>
         </div>
