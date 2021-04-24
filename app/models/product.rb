@@ -69,6 +69,11 @@ class Product < ApplicationRecord
     date =  ends_at.today? ? "Today": "%m/%d"
     ends_at.strftime("Ends #{date} at %I:%M%p")
   end
+
+  def auction_is_active?
+    self.closes_at < Time.now
+  end
+ 
  
   private
 

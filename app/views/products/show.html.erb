@@ -1,8 +1,35 @@
+<!-- 
+        Product model calls:
 
+        @product.current_bid_price  -  Last highest bid in a decimal string - "100.00"
+                .bid_price_plus(i)  - The current bid plus 'i' in a decimal string (1) - "101.00"
+                .heighest_bidder    - Returns object
+                .time_remaining     - String "Time left: 10d 10h 10m 10s"
+                .closes_at          - String "Ends 10/10 at 10:10AM"
+                .auction_is_active? - True or false
 
-    <!-- #<% @product.images.each do |image| %>
-        #<%= image_tag thumb(image)%>
-    #<% end %> -->
+        Database fields:
+            string    .title
+            float     .price
+            string    .location
+            string    .Condition
+            text      .description
+            bigint    .user_id
+            datetime  .created_at
+            datetime  .updated_at
+            integer   .views
+            boolean   .is_auction
+            decimal   .auction_starting_price
+            string    .auction_duration
+            boolean   .is_sale
+            decimal   .sale_price
+            string    .shipment_type
+            decimal   .shipment_fee
+            boolean   .active
+
+    -->     
+
+ 
 <div class="infoContainer">
 
     <div id="learnMoreContainerDetail">
