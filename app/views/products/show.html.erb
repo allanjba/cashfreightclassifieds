@@ -90,7 +90,9 @@
             </a>
         </div>
         <!-- place bid option -->
-        <% if @product.is_auction %>
+        <% case @product.is_auction %>
+        <% when true && @product.auction_is_active? %>
+        <!-- ACTIVE AUCTION -->
             <div id="auction">
                 <h3>Place a Bid</h3>
                 <p>Current price: <span id="current-price">$<%= @product.current_bid_price %></span></p>
@@ -108,9 +110,18 @@
                 <% else %>
                     <p> Your listing has <%= @product.bids.size %> bids</p>
                 <% end %>  
-
             </div>
-        <%end%>
+        <!-- END ACTIVE AUCTION -->
+        <% when true && !@product.auction_is_active? %>
+        <!-- CLOSED AUCTION-->
+            <div id="auction">
+                <h3>Auction is closed</h3>
+                <p>Sold for: <span id="current-price">$<%= @product.current_bid_price %></span></p>
+            </div>
+        <!-- END CLOSED AUCTION-->
+        <% else %>
+            
+        <% end %>
         <!-- end of place bid option -->
 
     <div id="adsContainer">
