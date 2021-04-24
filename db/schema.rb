@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_205223) do
+ActiveRecord::Schema.define(version: 2021_04_24_180750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,9 +143,11 @@ ActiveRecord::Schema.define(version: 2021_04_22_205223) do
     t.string "shipment_type"
     t.decimal "shipment_fee", precision: 8, scale: 2
     t.boolean "active"
+    t.integer "last_bid_id"
     t.index ["active"], name: "index_products_on_active"
     t.index ["is_auction"], name: "index_products_on_is_auction"
     t.index ["is_sale"], name: "index_products_on_is_sale"
+    t.index ["last_bid_id"], name: "index_products_on_last_bid_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

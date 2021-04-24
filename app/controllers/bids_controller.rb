@@ -9,7 +9,7 @@ class BidsController < ApplicationController
                 format.html { redirect_to dashboard_categories_path, notice: 'Your bid was placed.' }
                 format.json { render :show, status: :created, location: @bid }
                 format.js
-                @bid.product.update(price: @bid.bid_price)
+                @bid.product.update(last_bid_id: @bid.id)
             else
                 format.html { render :new }
                 format.json { render json: @bid.errors, status: :unprocessable_entity }

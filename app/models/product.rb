@@ -28,17 +28,23 @@ class Product < ApplicationRecord
     save!
   end
 
+  def heighest_bid
+    if self.bids.present?
+      Bid.find(self.last_bid_id)
+    end
+  end
+
   def current_bid_price
-      number_with_precision( self.price, :precision => 2)
+      number_with_precision( self.heighest_bid.bid_price, :precision => 2)
   end
 
   def bid_price_plus(i)
-    number_with_precision( self.price + i, :precision => 2)
+    number_with_precision( self.heighest_bid.bid_price + i, :precision => 2)
   end
 
   def heighest_bidder
     if self.bids.present?
-      self.bids.last.user
+      self.heighest_bid.user
     else
       self.user
     end
@@ -71,7 +77,7 @@ class Product < ApplicationRecord
   end
 
   def auction_is_active?
-    self.closes_at < Time.now
+    self.created_at.localtime + self.auction_duration.to_i.days > Time.now
   end
  
  
