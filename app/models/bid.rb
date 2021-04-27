@@ -3,5 +3,5 @@ class Bid < ApplicationRecord
   belongs_to :product
 
   validates :bid_price, presence: true
-  validates_numericality_of :bid_price, greater_than: ->(bid) { bid.product.price}
+  validates_numericality_of :bid_price, greater_than: ->(bid) { bid.product.current_bid_price.to_i}
 end
