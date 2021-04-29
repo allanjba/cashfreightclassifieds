@@ -11,15 +11,13 @@
 // about supported directives.
 //
 
+//= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require semantic
+//= require_tree .
 
-
-//= require_self
-
-
-
-  // application 
+// application 
 
 $('.ui.dropdown').dropdown();
 
