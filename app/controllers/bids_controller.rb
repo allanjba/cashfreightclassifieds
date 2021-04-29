@@ -10,6 +10,10 @@ class BidsController < ApplicationController
                 format.json { render :show, status: :created, location: @bid }
                 format.js
                 @bid.product.update(last_bid_id: @bid.id)
+                ActionCable.server.broadcast 'update_price_channel',
+                                   bid_price:  @bid.bid_price,
+                                   user: @bid.user,
+                                   bids_size: @bid.product.bids.size + 1
             else
                 format.html { render :new }
                 format.json { render json: @bid.errors, status: :unprocessable_entity }

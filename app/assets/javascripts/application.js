@@ -36,4 +36,3 @@ $("form").on('submit', function() {
   $("#bg-load-message").toggle();
 });
 
-console.log('Hello');

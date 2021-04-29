@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/users'
   get 'dashboard/categories'
-
+  
+  mount ActionCable.server, at: '/cable'
 
 end

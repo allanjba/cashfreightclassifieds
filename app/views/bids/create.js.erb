@@ -11,8 +11,5 @@
     <%end%>
 <% else %>
     $("#bg-load-message").hide()
-    $("#bid-form").hide().fadeOut(200);
-
-    $("#auction").append('<p>You are currently the heighest bidder</p>');
-    $("#current-price").text('<%= @bid.bid_price %>');
+    $("#bid_bid_price").hide()
 <% end %>
