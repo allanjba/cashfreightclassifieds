@@ -20,7 +20,8 @@
 
 // application 
 
-$('.ui.dropdown').dropdown();
+$( document ).on('turbolinks:load', function() {
+  $('.ui.dropdown').dropdown();
 
 function createAd(name, category, price, location, image, description) {
     let id = classifieds.classifiedAds.length + 1;
@@ -35,4 +36,7 @@ $('#avatar-field').change(function() {
 $("form").on('submit', function() {
   $("#bg-load-message").toggle();
 });
+
+
+})
 
