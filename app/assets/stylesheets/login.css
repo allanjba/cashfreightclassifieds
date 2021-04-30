@@ -1,32 +1,4 @@
-body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #ECECEC!important;
-}
-
-.logo {
-    background-color: #ECECEC;
-    display: flex;
-    margin-top: 2%;
-    margin-bottom: 5%
-}
-
-img {
-    width: 75px;
-    margin-right: 5px;
-}
-
-.cashfreight {
-    color: #273C60;
-    font-size: 24px;
-}
-
-.classifieds{
-    color: #1477F8;
-    font-size: 16px;
-}
-
-.ui.form.segment {
-    width: 50%;
-}
+/*
+*= require semantic
+*= require_tree ./login
+*/
