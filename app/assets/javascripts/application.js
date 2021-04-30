@@ -12,10 +12,10 @@
 //
 
 //= require jquery
-//= require rails-ujs
-//= require activestorage
-//= require semantic
+//= require jquery_ujs
 //= require turbolinks
+//= require semantic
+//= require activestorage
 //= require_tree .
 
 // application 

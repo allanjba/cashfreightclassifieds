@@ -103,7 +103,6 @@
 
                 <p id="highest-bidder"><%="You are the highest bidder" if current_user == @product.heighest_bidder %></p>
                 <p> Listing has <span id="bids-size"><%= @product.bids.size %></span> bids</p>
-
             </div>
         <!-- END ACTIVE AUCTION -->
         <% when true && !@product.auction_is_active? %>
