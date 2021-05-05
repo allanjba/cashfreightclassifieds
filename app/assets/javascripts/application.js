@@ -17,3 +17,5 @@
 //= require semantic
 //= require activestorage
 //= require_tree ./application
+//= require cable 
+
