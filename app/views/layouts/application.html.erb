@@ -15,7 +15,10 @@
 
   <body>
     <!-- track user -->
-    <%= tag('div', data: { user_id: current_user.id }) %>
+    <% if current_user.present? %>
+      <div data-user-id="<%=current_user.id%>"></div>
+    <% end %>
+    
     <!-- Header -->
     <div id="header" class="ui blue inverted segment">
       <div class="logo">
