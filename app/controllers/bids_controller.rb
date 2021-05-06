@@ -11,12 +11,11 @@ class BidsController < ApplicationController
                 format.js
                 @bid.product.update(last_bid_id: @bid.id)
                 ActionCable.server.broadcast 'update_price_channel',
-                                   bid_price:  @bid.price,
+                                   bid_price:   @bid.price,
                                    price_plus:  @bid.price_plus(1),
-                                   user: @bid.user,
-                                   bids_size: @bid.product.bids.size + 1
-                ActionCable.server.broadcast "update_price_channel_user_#{@bid.user.id}",
-                                   owner: true
+                                   user_id:        @bid.user.id,
+                                   product_id:  @bid.product.id,
+                                   bids_size:   @bid.product.bids.size + 1
             else
                 format.html { render :new }
                 format.json { render json: @bid.errors, status: :unprocessable_entity }

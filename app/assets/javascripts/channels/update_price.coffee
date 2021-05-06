@@ -9,18 +9,19 @@ App.update_price = App.cable.subscriptions.create "UpdatePriceChannel",
 
   received: (data) ->
     unless !data?
-      $("#current-price").text(data.bid_price)
-      $("#bids-size").text(data.bids_size)
+      $(".product-price[data-product-id=#{data.product_id}]").text("$#{data.bid_price}")
+      $(".product-price[data-product-id=#{data.product_id}]").effect("highlight", { color: "#fdff65" }, 1000);
+      $(".bids-size[data-product-id=#{data.product_id}]").text(data.bids_size)
 
-    if data.owner
-      $("#bid-form").hide()
-      $("#highest-bidder").text("You are the highest bidder")
-      $("#highest-bidder").show()
+    if data.user_id == $("div[data-user-id]").data("userId")
+      $(".display-bid-form[data-product-id=#{data.product_id}]").hide()
+      $(".highest-bidder[data-product-id=#{data.product_id}]").show()
     else
       # price = parseInt(data.bid_price) + 1
-      $("#bid-form").show()
-      $("#bid_bid_price").val(data.price_plus)
-      $("#highest-bidder").hide()
+      $(".display-bid-form[data-product-id=#{data.product_id}]").show()
+      $("#bid_bid_price[data-product-id=#{data.product_id}]").val(data.price_plus)
+      $(".highest-bidder[data-product-id=#{data.product_id}]").hide()
+
 
       
 
