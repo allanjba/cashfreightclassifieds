@@ -38,12 +38,18 @@ class Product < ApplicationRecord
     if self.bids.present?
     # Needs NumberHelper
       number_with_precision( self.highest_bid.bid_price, :precision => 2)
+    else
+      number_with_precision( self.auction_starting_price + i, :precision => 2)
     end
   end
 
   def bid_price_plus(i)
+    if self.bids.present?
     # Needs NumberHelper
     number_with_precision( self.highest_bid.bid_price + i, :precision => 2)
+    else
+      number_with_precision( self.auction_starting_price + i, :precision => 2)
+    end
   end
 
   def highest_bidder
