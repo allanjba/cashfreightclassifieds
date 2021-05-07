@@ -18,6 +18,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
+require 'capistrano/local_precompile'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.6'
@@ -37,7 +38,7 @@ set :rbenv_ruby, '2.6.6'
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 # require "capistrano/bundler"
-# require "capistrano/rails/assets"
+require 'capistrano/local_precompile'
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 
