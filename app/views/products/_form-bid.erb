@@ -1,0 +1,5 @@
+ <%= form_with(model: @bid, id: 'bid-form' )do |form| %>
+    <%= form.hidden_field :product_id, value: @product.id %>
+    <%= form.text_field :bid_price, value: @product.bid_price_plus(1), data: {product_id: @product.id } %>
+    <%= form.submit 'Place bid' %>
+<% end %>

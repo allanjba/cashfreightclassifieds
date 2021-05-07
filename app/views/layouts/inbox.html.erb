@@ -5,21 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <%= stylesheet_link_tag 'messages' %>
+    <%= stylesheet_link_tag    'messages', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'messages', 'data-turbolinks-track': 'reload' %>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
  
   </head>
 
   <body>
     <div class="header">
-        <a class="title" href="<%= root_path%>">
+        <a class="title" href="<%= root_path %>">
             <div>
                 <%= image_tag asset_path('cashfreightlogo.png'), class:'logo', alt: 'cashfreightlogo' %>
             </div>
@@ -97,6 +92,5 @@
     </div>
         
     </div>
-    <%= javascript_include_tag 'application' %>
   </body>
 </html>

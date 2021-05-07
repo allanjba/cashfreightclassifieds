@@ -27,10 +27,16 @@
     <% @products.each do |product| %>
 
       <div class="ui card">
-            <%= link_to image_tag(card(product.images.first)), product, class: 'image'  %>
+            <%= link_to image_tag(card(product.images.last)), product, class: 'image'  %>
           <div class="content">
               <div class="ui header"><%= product.title %>
-                  <div class="sub header"><%= number_to_currency(product.price, :precision => 2) %></div>
+                  <div class="sub header">
+                    <% if product.is_auction %>
+                        <span  class="product-price" data-product-id="<%= product.id %>"><%= product.current_bid_price %></span>
+                    <% else %>
+                        <%= number_to_currency(product.price, :precision => 2) %>
+                    <% end %>
+                  </div>
               </div>
               <div class="meta">
                   <span><%= time_ago_in_words(product.created_at) %> ago  |</span>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'my-watchlist', to: 'watchlist#index'
   get 'my-listings', to: 'mylistings#index'
   get 'favorites/update'
+  resources :bids
   resources :categories
   resources :products do
     member do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboard#index'
   get 'dashboard/users'
   get 'dashboard/categories'
-
+  
+  mount ActionCable.server, at: '/cable'
 
 end

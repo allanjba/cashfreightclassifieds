@@ -1,0 +1,14 @@
+<%if !current_user.present? %>
+    window.location.replace('<%=new_user_session_path%>')
+<% elsif @bid.errors.any? %>
+    $("#bg-load-message").hide();
+    // removes previous errors from page
+    $("#bid-errors").remove();
+    //creates paragraph where errors will show
+    $("#bid-form").append('<p id="bid-errors"></p>');
+    <% @bid.errors.full_messages.each do |error| %>
+        $("#bid-errors").append('<%=error%><br/>');
+    <%end%>
+<% else %>
+    $("#bg-load-message").hide()
+<% end %>

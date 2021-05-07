@@ -1,8 +1,35 @@
+<!-- 
+        Product model calls:
 
+        @product.current_bid_price  -  Last highest bid in a decimal string - "100.00"
+                .bid_price_plus(i)  - The current bid plus 'i' in a decimal string (1) - "101.00"
+                .highest_bidder    - Returns object
+                .time_remaining     - String "Time left: 10d 10h 10m 10s"
+                .closes_at          - String "Ends 10/10 at 10:10AM"
+                .auction_is_active? - True or false
 
-    <!-- #<% @product.images.each do |image| %>
-        #<%= image_tag thumb(image)%>
-    #<% end %> -->
+        Database fields:
+            string    .title
+            float     .price
+            string    .location
+            string    .Condition
+            text      .description
+            bigint    .user_id
+            datetime  .created_at
+            datetime  .updated_at
+            integer   .views
+            boolean   .is_auction
+            decimal   .auction_starting_price
+            string    .auction_duration
+            boolean   .is_sale
+            decimal   .sale_price
+            string    .shipment_type
+            decimal   .shipment_fee
+            boolean   .active
+
+    -->     
+
+ 
 <div class="infoContainer">
 
     <div id="learnMoreContainerDetail">
@@ -15,8 +42,8 @@
         </div>
     </div>
 
-    <div class="adContainer">
-            <div id="adDetail" class="ui link cards">
+    <div class="adContainer" >
+        <div id="adDetail" class="ui link cards">
             <div id="detailCard" class="ui card">
                 <div class="content">
                     <div id="detailMainHeader" class="ui header"><%= @product.title %>
@@ -49,20 +76,49 @@
                         
                     </div>
                 </div>
-                <%= image_tag large(@product.images.first) %>
+                <%= image_tag large(@product.images.last) %>
                 <div class="content">
                     <div id="contentHeader" class="ui header">
                     Description:
                     </div>
                     <p><%= @product.description %></p>
                 </div>
-            </div></div>
-            <a style="margin: 2%;" href="<%= products_path %>">
-                <i class="reply icon"></i>
-                Back to Listings...
-            </a>
+            </div>
         </div>
-
+        <a style="margin: 2%;" href="<%= products_path %>">
+            <i class="reply icon"></i>
+            Back to Listings...
+        </a>
+    </div>
+    <!-- Place a bid -->
+    <% case @product.is_auction %>
+    <% when true && @product.auction_is_active? %>
+    <!-- ACTIVE AUCTION -->
+        <div id="auction">
+            <h3>Place a Bid</h3>
+            <p>Current price: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
+            <p>Time left: <%= @product.time_remaining %></p>
+            <p><%= @product.closes_at%></p>
+            <!-- show form products/_form-bid if not the highest bidder -->
+            <div class="display-bid-form" data-product-id="<%= @product.id %>" style="<%='display: none;' if current_user == @product.highest_bidder %>">
+                <%= render 'form-bid' %>
+            </div>
+            <p class="highest-bidder" data-product-id="<%= @product.id %>" style="<%='display: none;' unless current_user == @product.highest_bidder %>"><%="You are the highest bidder"%></p>
+            <p> Listing has <span class="bids-size" data-product-id="<%= @product.id %>"><%= @product.bids.size %></span> bids</p>
+        </div>
+    <!-- END ACTIVE AUCTION -->
+    <% when true && !@product.auction_is_active? %>
+    <!-- CLOSED AUCTION-->
+        <div id="auction">
+            <h3>Auction is closed</h3>
+            <p>Sold for: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
+        </div>
+    <!-- END CLOSED AUCTION-->
+    <% else %>
+        
+    <% end %>
+        <!-- end of Place a bid -->
+    <!-- Side ads -->
     <div id="adsContainer">
         <div id="recentAds" class="ui center aligned black segment">
             <h4 class="ui grey header">Most Recent...</h4>
@@ -70,16 +126,22 @@
                 <% @latest.each do |product| %>
                 <div id="sidebarCard" onclick="viewAd(1)" class="ui card">
                     <a class="image" href=" <%= product.id %>">
-                        <%= image_tag card(product.images.first) %>
+                        <%= image_tag card(product.images.last) %>
                     </a>
                     <div id="sidebarAd" class="content">
                         <div id="recentAdsHeader" class="ui header"><%= product.title %></div>
-                        <div style="font-size: 12px;" class="header"><%= number_to_currency(product.price, :precision => 2) %></div>
+                        <!-- If the product is an auction it will show bid price -->
+                        <div style="font-size: 12px;">
+                            <% if product.is_auction %>
+                                <span  class="product-price" data-product-id="<%= product.id %>"><%= product.current_bid_price %></span>
+                            <% else %>
+                                <%= number_to_currency(product.price, :precision => 2) %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
                 <% end %>
             </div>
         </div>
     </div>
-
 </div>

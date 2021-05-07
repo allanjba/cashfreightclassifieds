@@ -11,30 +11,12 @@
 // about supported directives.
 //
 
-//= require rails-ujs
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require turbolinks
+//= require semantic
 //= require activestorage
+//= require_tree ./application
+//= require cable 
 
-
-//= require_self
-
-
-
-  // application 
-
-$('.ui.dropdown').dropdown();
-
-function createAd(name, category, price, location, image, description) {
-    let id = classifieds.classifiedAds.length + 1;
-    classifieds.addAd(id, name, category, price, location, image, description);
-}
-
-// avatar
-$('#avatar-field').change(function() {
-  $("#form-avatar").submit();
-});
-
-$("form").on('submit', function() {
-  $("#bg-load-message").toggle();
-});
-
-console.log('Hello');
