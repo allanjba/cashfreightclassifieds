@@ -39,7 +39,7 @@ class Product < ApplicationRecord
     # Needs NumberHelper
       number_with_precision( self.highest_bid.bid_price, :precision => 2)
     else
-      number_with_precision( self.auction_starting_price + i, :precision => 2)
+      number_with_precision( self.auction_starting_price, :precision => 2)
     end
   end
 
