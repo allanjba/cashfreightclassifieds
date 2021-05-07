@@ -35,8 +35,10 @@ class Product < ApplicationRecord
   end
 
   def current_bid_price
+    if self.bids.present?
     # Needs NumberHelper
       number_with_precision( self.highest_bid.bid_price, :precision => 2)
+    end
   end
 
   def bid_price_plus(i)
