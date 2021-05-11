@@ -13,6 +13,11 @@
   </head>
 
   <body>
+      <!-- track user -->
+    <% if current_user.present? %>
+        <div style="display: none;" data-user-id="<%=current_user.id%>"></div>
+    <% end %>
+    
     <div class="header">
         <a class="title" href="<%= root_path %>">
             <div>
