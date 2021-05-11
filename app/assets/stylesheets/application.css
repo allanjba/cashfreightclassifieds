@@ -32,6 +32,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  margin-top: 0;
 }
 #menu {
   z-index: 1001;
@@ -191,6 +192,17 @@ and (orientation: landscape) {
   margin-top: 4%;
   width: 52%;
   flex-direction: column;
+  /* padding-top: 200px; */
+}
+
+#auction {
+  margin-top: 130px;
+  padding: 5px;
+  width: 425px;
+}
+
+p {
+  line-height: .50em;
 }
 
 .adContainer img {
