@@ -12,7 +12,6 @@ class Product < ApplicationRecord
   # has_many :users, through: :favorites
 
   validates :title, presence: true
-  validates :price, presence: true
   validates :description, presence: true
   # validates :categories, presence: true
   validates :images, presence: true, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..15.megabytes }
