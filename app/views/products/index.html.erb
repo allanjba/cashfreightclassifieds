@@ -32,7 +32,7 @@
               <div class="ui header"><%= product.title %>
                   <div class="sub header">
                     <% if product.is_auction %>
-                        $<span  class="product-price" data-product-id="<%= product.id %>"><%= product.current_bid_price %></span>
+                        <span  class="product-price" data-product-id="<%= product.id %>">$<%= product.current_bid_price %></span>
                     <% else %>
                         <%= number_to_currency(product.price, :precision => 2) %>
                     <% end %>
