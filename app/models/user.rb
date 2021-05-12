@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :shipping_addresses, dependent: :destroy
   has_many :bids, dependent: :destroy
+  has_many :notifications, as: :recipient
   
   has_one_attached :avatar, dependent: :destroy
 

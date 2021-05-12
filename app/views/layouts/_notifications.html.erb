@@ -1,0 +1,12 @@
+<% if current_user.present? %>
+    <% current_user.notifications.each do |n| %>
+    <div class="item" >
+        <% user = n.to_notification.user %>
+        <% name = user.first_name.capitalize %>
+        <%= link_to name, user_path(user) %>
+        <%= n.to_notification.message %>
+        <%= link_to n.to_notification.type, n.to_notification.url %>
+    </div>
+    <% end %>
+<% end %>
+<% console %>

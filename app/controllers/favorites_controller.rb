@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
     if favorite == []
       # create favorite
       Favorite.create(product: Product.find(params[:product]), user: current_user)
+      FavoritedNotification.with({product: @product, user: current_user}).deliver_later(@product.user)
     else
       # delete favorite
       favorite.destroy_all

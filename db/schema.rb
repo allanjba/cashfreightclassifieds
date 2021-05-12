@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_180750) do
+ActiveRecord::Schema.define(version: 2021_05_11_184445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,18 @@ ActiveRecord::Schema.define(version: 2021_04_24_180750) do
     t.string "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type"
+    t.bigint "recipient_id"
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
 
   create_table "products", force: :cascade do |t|

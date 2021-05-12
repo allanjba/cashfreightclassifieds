@@ -83,7 +83,7 @@
 }
 
 .linkIcon {
-    margin-top: 8px;
+    margin: 10px;
 }
 
 #ads {
@@ -759,6 +759,14 @@ and (orientation: portrait) {
     width: 80%;
   }
 }
+/* notification */
+.ui.circular {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+    
+}
+
 
 /* Landscape */
 @media only screen 
