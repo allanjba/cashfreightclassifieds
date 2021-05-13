@@ -6,7 +6,7 @@
           <% if current_user.admin? %>
               <div class="item"><%= link_to 'Dashboard', dashboard_path %></div>
           <% end %>
-          <div class="item"><%= link_to 'New Listing', new_product_path %></div>
+          <%= link_to 'New Listing', new_product_path, class: "item" %>
           <div class="item"><%= link_to 'My Listings', my_listings_path %></div>
           <div class="item"><%= link_to 'My Watch List', my_watchlist_path %></div>
           <div class="ui divider"></div>

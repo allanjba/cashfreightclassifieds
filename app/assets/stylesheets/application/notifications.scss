@@ -1,0 +1,15 @@
+/* notification */
+.notification-size {
+    position: absolute;
+    top: -3px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 15px;
+    font-size: 10px;
+    /* padding: 0px 2px; */
+    text-align: center;
+    line-height: 15px;
+    align-items: center;
+}
