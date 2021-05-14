@@ -19,16 +19,24 @@ $( document ).on('turbolinks:load', function() {
     $("#bg-load-message").toggle();
   });
 
-  $('.auctionInput').hide();
-  $('.buyItInput').hide();
+  // Checking which listing type is checked and show input
+  if($('#product_is_auction').is(':checked')) {
+    $('.auctionInput').show();
+  } else {
+    $('.auctionInput').hide();
+  }
+
+  if($('#product_is_sale').is(':checked')) {
+    $('.buyItInput').show();
+  } else {
+    $('.buyItInput').hide();
+  }
 
   // Checking if auction checkbox is checked
   $('#product_is_auction').on('click', function(){
     if($('#product_is_auction').is(':checked')) {
-      console.log('Auction Yes');
       $('.auctionInput').transition('fade down');
     } else {
-      console.log('Auction No');
       $('.auctionInput').transition('fade down');
     }
   });
@@ -36,14 +44,16 @@ $( document ).on('turbolinks:load', function() {
   // Checking if buy it now checkbox is checked
   $('#product_is_sale').on('click', function(){
     if($('#product_is_sale').is(':checked')) {
-      console.log('Buy it Yes');
       $('.buyItInput').transition('fade down');
     } else {
-      console.log('Buy it No');
       $('.buyItInput').transition('fade down');
     }
   });
   
+  $('#product_images').change(function () {
+    var a = $('#product_images').val().toString().split('\\');
+    $('#fakeInput').val(a[a.length -1]);
+  });
   
 })
 // Timer for auction

@@ -69,9 +69,9 @@
             <!-- END ACTIVE AUCTION -->
             <% elsif @product.is_auction && !@product.auction_is_active? %>
             <!-- CLOSED AUCTION-->
-                <div id="auction">
-                    <h3>Auction is closed</h3>
-                    <p>Sold for: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
+                <div id="auction" class="ui card">
+                    <h3 style="margin-left: 32%">Auction is closed</h3>
+                    <p style="margin: 5px">Sold for: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
                 </div>
             <!-- END CLOSED AUCTION-->
             <% else %>
