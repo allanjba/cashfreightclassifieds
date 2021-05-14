@@ -1,6 +1,6 @@
 
-<% if current_user.notifications.unread.size > 0 %>
-    $(".notification-size").text("<%= current_user.notifications.unread.size %>");
+<% if @notificationSize > 0 %>
+    $("#notification-menu .notification-size").text("<%= @notificationSize %>");
 <% else %>
-    $(".notification-size").hide();
+    $("#notification-menu .notification-size").hide();
 <% end%>

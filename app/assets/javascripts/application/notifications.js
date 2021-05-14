@@ -1,7 +1,7 @@
 
 $( document ).on('turbolinks:load', function() {
 
-$( ".notification.item" ).hover(
+$( "#notification-menu .notification.item.unread" ).hover(
     function() {
         // get notification ID
         id = $(this).data("notification-id");

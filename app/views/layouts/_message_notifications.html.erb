@@ -1,9 +1,9 @@
 <div class="ui list menu">
-    <div class='header'> Notifications </div>
+    <div class='header'> Messages </div>
     <% if current_user.present? %>
         <!-- Each user Notifications in DESCENDING order. Can use 'ASC' -->
-        <!-- Add where.not type message -->
-        <% current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').each do |n| %>
+        <!-- Add where type message -->
+        <% current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').each do |n| %>
         <div href='notifications/read/7' class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
             <!-- variables -->
             <% user = User.find n.to_notification.user.id %>
