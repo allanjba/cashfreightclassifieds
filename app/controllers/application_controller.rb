@@ -28,5 +28,18 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?
+    # **args wil transform arguments into hash
+    # Expects user and size key
+    def user_avatar **args
+        user = args[:user]
+        size = 150 # defaultt size
+        size = args[:size] if args.has_key?(:size) # overwrite size if key is passed
+        if user.avatar.attached?
+            user.avatar.variant(combine_options: { resize: "#{size}x#{size}^", extent: "#{size}x#{size}", gravity: 'center' }).processed
+        else 
+            asset_path('userImage.png')
+        end
+    end
+
+    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar
 end

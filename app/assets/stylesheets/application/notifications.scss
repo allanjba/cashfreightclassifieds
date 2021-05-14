@@ -13,3 +13,25 @@
     line-height: 15px;
     align-items: center;
 }
+
+.notification.item {
+    border-top: #e8e8e8 solid 1px!important;
+    &.unread {
+        background: aliceblue;
+    }
+    
+    & .avatar.link {
+        float: left;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    & .content {
+        float: left;
+        
+        & .time {
+            font-size: 11px;
+            color: #a2a2a2;
+        }  
+    } 
+}

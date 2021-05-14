@@ -18,15 +18,19 @@ class MessageNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  def message
-    "Sent you a message"
-  end
-  def product
-    # Product.find(params[:product])
-    params[:product]
+  def user
+    params[:user]
   end
 
+  def message
+    "sent you a" 
+  end
+
+  def type
+    "message"
+  end
+  #
   def url
-    "Message url"
+    conversation_path(params[:conversation])
   end
 end

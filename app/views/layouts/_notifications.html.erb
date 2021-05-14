@@ -1,11 +1,30 @@
-<% if current_user.present? %>
-    <% current_user.notifications.each do |n| %>
-    <div class="item" >
-        <% user = n.to_notification.user %>
-        <% name = user.first_name.capitalize %>
-        <%= link_to name, user_path(user) %>
-        <%= n.to_notification.message %>
-        <%= link_to n.to_notification.type, n.to_notification.url %>
-    </div>
+<div class="ui list menu">
+    <div class='header'> Notifications </div>
+    <% if current_user.present? %>
+        <% current_user.notifications.each do |n| %>
+        <div href='notifications/read/7' class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
+            <!-- variables -->
+            <% user = User.find n.to_notification.user.id %>
+            <% name = user.first_name.capitalize %>
+            <!-- image link-->
+            <%= link_to  user_path(user), class: 'notification avatar link' do 
+                image_tag(user_avatar(user: user, size: '25'), class: 'ui avatar image')
+            end %>
+            <div class="notification content">
+                <!-- name link -->
+                <%= link_to name, user_path(user), class: 'header' %>
+                <div class="description">
+                    <!-- message -->
+                    <%= n.to_notification.message %>
+                    <!-- link to where the action came from -->
+                    <%= link_to n.to_notification.type, n.to_notification.url %>
+                    <div class='notification time'>
+                        <%= time_ago_in_words(n.created_at) %> ago
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <% end %>
     <% end %>
-<% end %>
+</div>

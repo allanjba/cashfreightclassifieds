@@ -38,5 +38,4 @@ class User < ApplicationRecord
     return email
   end
 
-
 end
