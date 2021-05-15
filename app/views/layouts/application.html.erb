@@ -34,18 +34,25 @@
       <div class="icons">
 
           <!-- messages notifications -->
-          <div class="linkIcon" id="messages-notification-menu">
-            <div class="ui icon top right inline item dropdown" style="margin-right: 0">
-              <!-- Check for user notifications  -->
-              <% if current_user && current_user.notifications.where(type: 'MessageNotification').unread.any? %>
-                <!-- Unread notification size -->
-                <div class="notification-size red" ><%= current_user.notifications.where(type: 'MessageNotification').unread.size %></div>
-              <% end %>
+          <div class="linkIcon" id="messages-notification-menu" >
+            <% if current_user.present? && current_user.notifications.where(type: 'MessageNotification').any? %>
+              <div class="ui icon top right inline item dropdown" style="margin-right: 0">
+                <!-- Check for user notifications  -->
+                <% if current_user && current_user.notifications.where(type: 'MessageNotification').unread.any? %>
+                  <!-- Unread messages notification with uniq conversation paramater -->
+                  <div class="notification-size red" ><%= current_user.notifications.where(type: 'MessageNotification').unread.uniq(&:params).size %></div>
+                <% end %>
+                <i  class="envelope icon"></i>
+                  <%= render partial: 'layouts/message_notifications' %>
+              </div>
+            <% else %>
+            <a class="ui icon top right inline item "  href="<%= conversations_path %>" style="margin-right: 0">
               <i  class="envelope icon"></i>
-                 <%= render partial: 'layouts/message_notifications' %>
-            </div>
-          </div>
+            </a>
 
+            <% end %>
+          </div>
+          
           <!-- Notifications -->
           <div class="linkIcon" id="notification-menu">
               <div class="ui icon top right inline item dropdown" style="margin-right: 0">

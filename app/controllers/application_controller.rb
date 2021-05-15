@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+
+
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     def configure_permitted_parameters
@@ -37,7 +39,8 @@ class ApplicationController < ActionController::Base
         if user.avatar.attached?
             user.avatar.variant(combine_options: { resize: "#{size}x#{size}^", extent: "#{size}x#{size}", gravity: 'center' }).processed
         else 
-            asset_path('userImage.png')
+            # needs to call asset_path from action controller
+            ActionController::Base.helpers.asset_path('userImage.png')
         end
     end
 

@@ -1,9 +1,8 @@
 <div class="ui list menu">
     <div class='header'> Messages </div>
     <% if current_user.present? %>
-        <!-- Each user Notifications in DESCENDING order. Can use 'ASC' -->
-        <!-- Add where type message -->
-        <% current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').each do |n| %>
+        <!-- Each user notification for messages in DESCENDING order. (Can use 'ASC')  with uniq params( uniq groups messages from conversations into one notification)-->
+        <% current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').uniq(&:params).each do |n| %>
         <div href='notifications/read/7' class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
             <!-- variables -->
             <% user = User.find n.to_notification.user.id %>

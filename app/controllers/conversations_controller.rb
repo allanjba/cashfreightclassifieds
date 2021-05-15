@@ -10,6 +10,8 @@ class ConversationsController < ApplicationController
     def show
         @conversations = filterConversations
         @conversation = current_user.mailbox.conversations.find(params[:id])
+        notifications = current_user.notifications.where('params @> ?', {conversation: @conversation.id}.to_json)  
+        notifications.mark_as_read!
         respond_to do |format|
             format.html
             format.js
@@ -31,6 +33,8 @@ class ConversationsController < ApplicationController
         recipient = User.find(params[:user_id])
         receipt = current_user.send_message(recipient, params[:body], params[:subject])  
         redirect_to conversation_path(receipt.conversation)
+        # deliver methods
+        MessageNotification.with({conversation: receipt.conversation.id, user: current_user}).deliver_later(from(receipt.conversation, current_user))
     end
 
     # check convercetion for sender

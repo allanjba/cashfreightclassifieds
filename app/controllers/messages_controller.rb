@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
         respond_to do |format|
             format.html { redirect_to conversation_path(@receipt.conversation) }
             format.js
-            MessageNotification.with({conversation: @conversation, user: current_user}).deliver_later(from(@conversation, current_user))
+            MessageNotification.with({conversation: @conversation.id, user: current_user}).deliver_later(from(@conversation, current_user))
         end
     end
 
