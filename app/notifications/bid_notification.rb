@@ -1,9 +1,9 @@
 # To deliver this notification:
 #
-# FavoritedNotification.with(post: @post).deliver_later(current_user)
-# FavoritedNotification.with(post: @post).deliver(current_user)
+# BidNotification.with(post: @post).deliver_later(current_user)
+# BidNotification.with(post: @post).deliver(current_user)
 
-class FavoritedNotification < Noticed::Base
+class BidNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
@@ -17,13 +17,13 @@ class FavoritedNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-
+  
   def user
     params[:user]
   end
 
   def message
-    "favorited your"
+    params[:message]
   end
 
   def type

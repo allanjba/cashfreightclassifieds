@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :auctions
   has_and_belongs_to_many :categories
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   has_many :favorites
   has_many :bids
   

@@ -5,27 +5,50 @@
         <!-- Add where.not type message -->
         <% current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').each do |n| %>
         <div href='notifications/read/7' class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
-            <!-- variables -->
-            <% user = User.find n.to_notification.user.id %>
-            <% name = user.first_name.capitalize %>
-            <!-- image link-->
-            <%= link_to  user_path(user), class: 'notification avatar link' do 
-                image_tag(user_avatar(user: user, size: '25'), class: 'ui avatar image')
-            end %>
-            <div class="notification content">
-                <!-- name link -->
-                <%= link_to name, user_path(user), class: 'header' %>
-                <div class="description">
-                    <!-- message -->
-                    <%= n.to_notification.message %>
-                    <!-- link to where the action came from -->
-                    <%= link_to n.to_notification.type, n.to_notification.url %>
-                    <div class='notification time'>
-                        <%= time_ago_in_words(n.created_at) %> ago
+            
+            <% case n.type %>
+            <% when "BidNotification" %>
+                <!-- NOTIFICATION FOR BIDS --------------------------- -->
+                <% user = User.find n.to_notification.user.id %>
+                <% product = Product.find(n.to_notification.params[:product[:id]]) %>
+                <%= link_to  product_path(product), class: 'notification avatar link' do 
+                    image_tag(large(product.images.last), class: 'ui avatar image')
+                end %>
+                <div class="notification content">
+                    <div class="description">
+                        <!-- link to where the listing -->
+                        <%= link_to n.to_notification.message, n.to_notification.url %>
+                        <div class='notification time'>
+                            <%= time_ago_in_words(n.created_at) %> ago
+                        </div>
                     </div>
-                    
                 </div>
-            </div>
+                <!-- END NOTIFICATION FOR BIDS ----------------------- -->
+            <% else %>
+                <!--  ALL OTHER NOTIFICATION ------------------------- -->
+                <!-- variables -->
+                <% user = User.find n.to_notification.user.id %>
+                <% name = user.first_name.capitalize %>
+                <!-- image link-->
+                <%= link_to  user_path(user), class: 'notification avatar link' do 
+                    image_tag(user_avatar(user: user, size: '25'), class: 'ui avatar image')
+                end %>
+                <div class="notification content">
+                    <!-- name link -->
+                    <%= link_to name, user_path(user), class: 'header' %>
+                    <div class="description">
+                        <!-- message -->
+                        <%= n.to_notification.message %>
+                        <!-- link to where the action came from -->
+                        <%= link_to n.to_notification.type, n.to_notification.url %>
+                        <div class='notification time'>
+                            <%= time_ago_in_words(n.created_at) %> ago
+                        </div>
+                    </div>
+                </div>
+                <!--  END ALL OTHER NOTIFICATION ---------------------- -->
+            <% end %>
+
         </div>
         <% end %>
     <% end %>

@@ -19,6 +19,9 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # notifications
 gem "noticed", "~> 1.4"
+# images for seeding
+gem 'unsplash'
+gem 'faker'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
