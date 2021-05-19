@@ -1,16 +1,17 @@
-<div class="ui list menu">
-    <div class='header'> Notifications </div>
-    <% if current_user.present? %>
-        <!-- Each user Notifications in DESCENDING order. Can use 'ASC' -->
-        <!-- Add where.not type message -->
-        <% current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').each do |n| %>
-        <div href='notifications/read/7' class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
+<!-- Find me in  views/notifications/items/ -->
+<div class='header'> Notifications </div>
+
+<% if current_user.present? %>
+    <!-- Each user Notifications in DESCENDING order. Can use 'ASC' -->
+    <!-- Add where.not type message -->
+    <% current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').each do |n| %>
+        <div class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
             
             <% case n.type %>
             <% when "BidNotification" %>
                 <!-- NOTIFICATION FOR BIDS --------------------------- -->
                 <% user = User.find n.to_notification.user.id %>
-                <% product = Product.find(n.to_notification.params[:product[:id]]) %>
+                <% product = Product.find(n.to_notification.params[:product]) %>
                 <%= link_to  product_path(product), class: 'notification avatar link' do 
                     image_tag(large(product.images.last), class: 'ui avatar image')
                 end %>
@@ -48,8 +49,6 @@
                 </div>
                 <!--  END ALL OTHER NOTIFICATION ---------------------- -->
             <% end %>
-
         </div>
-        <% end %>
     <% end %>
-</div>
+<% end %><!-- end if -->

@@ -44,5 +44,20 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar
+    def message_unread_size
+        if current_user && current_user.notifications.where(type: 'MessageNotification').unread.any?
+            current_user.notifications.where(type: 'MessageNotification').unread.size
+        else
+            0
+        end
+    end
+    def notification_unread_size
+        if current_user && current_user.notifications.where.not(type: 'MessageNotification').unread.any?
+            current_user && current_user.notifications.where.not(type: 'MessageNotification').unread.size
+        else
+            0
+        end
+    end
+
+    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar, :notification_unread_size, :message_unread_size
 end

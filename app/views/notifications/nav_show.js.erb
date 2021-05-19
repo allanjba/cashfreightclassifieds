@@ -1,0 +1,12 @@
+// check for notifications and display
+<% if notification_unread_size > 0 %>
+    $("#notification-menu .notification-size").text("<%= notification_unread_size %>");
+    $("#notification-menu .notification-size").show();
+    $("#notification-menu .ui.list.menu").html("<%= j render 'notifications/items/notification_item' %>");
+<% end %>
+<% if message_unread_size > 0 %>
+    $("#messages-notification-menu .ui.list.menu").html("<%= j render 'notifications/items/message_notification_item' %>");
+    $("#messages-notification-menu .notification-size").show();
+    $("#messages-notification-menu .notification-size").text("<%= message_unread_size %>");
+<% end %>
+

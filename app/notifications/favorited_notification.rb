@@ -7,6 +7,7 @@ class FavoritedNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
+  deliver_by :action_cable
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -29,7 +30,7 @@ class FavoritedNotification < Noticed::Base
   def type
     "Listing"
   end
-  #
+
   def url
     product_path(params[:product])
   end

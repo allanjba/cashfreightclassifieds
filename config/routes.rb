@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'dashboard/categories'
   
   get '/notifications/read/:id', to: 'notifications#read'
+  get '/notifications/nav-show', to: 'notifications#nav_show'
   mount ActionCable.server, at: '/cable'
 
 end
