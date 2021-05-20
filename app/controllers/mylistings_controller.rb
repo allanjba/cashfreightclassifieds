@@ -3,7 +3,8 @@ class MylistingsController < ApplicationController
   
     def index
       @products = current_user.products
-      @title = "My Listings"
+      @title = "My Buy It Now Ads"
+      @title2 = "My Auctions"
       render 'products/index'
     end
   

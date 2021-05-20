@@ -51,7 +51,7 @@
               <% if user_signed_in? %>
                 <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
               <% else %>
-                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Whatch List', new_user_session_path %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Watch List', new_user_session_path %>
               <% end %>
               </span>
 
@@ -69,7 +69,7 @@
   <% if params[:query].present? %>
     Search results for: "<%= params[:query] %>"
   <% elsif @title.present? %>
-    <%= @title %>
+    <%= @title2 %>
   <% else %>
     Auctions Ending Soon ...
   <% end %>
@@ -109,7 +109,7 @@
               <% if user_signed_in? %>
                 <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
               <% else %>
-                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Whatch List', new_user_session_path %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Watch List', new_user_session_path %>
               <% end %>
               </span>
 
