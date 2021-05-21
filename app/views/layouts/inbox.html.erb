@@ -12,36 +12,60 @@
  
   </head>
 
-  <body>
-      <!-- track user -->
+<body>
+    <!-- track user -->
     <% if current_user.present? %>
         <div style="display: none;" data-user-id="<%=current_user.id%>"></div>
     <% end %>
     
-    <div class="header">
+    <!-- header -->
+    <header class="dashboard header">
+
+        <!-- logo -->
         <a class="title" href="<%= root_path %>">
-            <div>
-                <%= image_tag asset_path('cashfreightlogo.png'), class:'logo', alt: 'cashfreightlogo' %>
-            </div>
-            <div>
-                <div>
-                    <span class="cashfreight">CashFreight</span>
-                </div>
-                <div>
-                    <span class="classifieds">Classifieds</span>
-                </div>
+            <div class="logo header">
+                <%= image_tag asset_path('logo_white.png'), class:'logo', alt: 'cashfreightlogo' %>
             </div>
         </a>
-        <div class="icons">
-            <div id="menu" class="ui icon top right pointing dropdown button">
-                <i class="bars icon"></i>
-                <!-- render partial  _menu.html.erb -->
-                <%= render partial: 'layouts/menu' %>
-                <!-- end render -->
+
+        
+        <div class="right">
+            <!-- icons-->
+            <div class="icons light">
+                 <!-- Messages Notifications -->
+                <%= render partial: 'notifications/message_notifications' %>
+                <!-- Notifications -->
+                <%= render partial: 'notifications/notifications' %>
+                
             </div>
+
+            <!-- menu desktop -->
+            <div class="account-menu">
+                <div class="user-avatar">
+                    <%=  image_tag(user_avatar(user: current_user, size: '25'), class: 'ui avatar image')%>
+                </div>
+                <nav class="menu">
+                    <header>My Account</header>
+                    <ul>
+                        <%= render partial: 'layouts/menus/dropdown_list' %>
+                    </ul>
+                </nav>
+            </div>
+            <!--  menu mobile -->
+            <nav class="mobile" id="mobile-menu">
+                <header><i class="far fa-bars"></i></header>
+                <ul>
+                    <%= render partial: 'layouts/menus/dropdown_list' %>
+                </ul>
+            </nav>
+
         </div>
-        </div>
-    </div>
+
+
+        
+       
+
+    </header>
             <!-- notifications -->
             <% unless notice.nil? %>
             <div style="margin: 20px;">

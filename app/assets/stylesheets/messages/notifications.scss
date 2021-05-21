@@ -1,0 +1,40 @@
+/* notification */
+.notification-size {
+    position: absolute;
+    top: -4px;
+    left: 21px;
+    width: 15px;
+    height: 15px;
+    background: var(--alert-color);
+    border-radius: 15px;
+    font-size: 9px;
+    /* padding: 0px 2px; */
+    text-align: center;
+    line-height: 16px;
+    align-items: center;
+}
+
+.notification.item {
+    border-top: #e8e8e8 solid 1px!important;
+    &.unread {
+        background: aliceblue;
+    }
+    
+    & .avatar.link {
+        float: left;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    & .content {
+        float: left;
+        
+        & .time {
+            font-size: 11px;
+            color: #a2a2a2;
+        }  
+    } 
+}
+.hide {
+    display: none;
+}

@@ -1,0 +1,46 @@
+.header {
+    background-color: #2185D0;
+    display: block;
+    color: white;
+
+    &.dashboard {
+        padding: 10px 20px;
+
+        .icon{
+            margin: 0 10px;
+        }
+    }
+}
+.account-menu {
+    display: flex!important;
+    align-items: center;
+    .user-avatar {
+        float: left;
+    }
+}
+
+.logo {
+    display: inline-block;
+    &.header {
+        height: 25px;
+        width: 118px;
+    }
+}
+
+.right {
+    float:right;
+    display: flex;
+    align-items: center;
+    & > * {
+        display: inline-block;
+        margin: 0 5px;
+    }
+}
+.left {
+    float:left;
+    & > * {
+        display: inline-block;
+        display: flex;
+        align-items: center;
+    }
+}

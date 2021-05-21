@@ -1,31 +1,31 @@
 <!-- Find me in  views/notifications/items/ -->
-<div class='header'> Messages </div>
+<li class='li-title'><a href="#">Messages</a></li>
 
 <% if current_user.present? %>
     <!-- Each user notification for messages in DESCENDING order. (Can use 'ASC')  with uniq params( uniq groups messages from conversations into one notification)-->
     <% current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').uniq(&:params).each do |n| %>
-        <div class="notification item <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
-            <!-- variables -->
-            <% user = User.find n.to_notification.user.id %>
-            <% name = user.first_name.capitalize %>
-            <!-- image link-->
-            <%= link_to  user_path(user), class: 'notification avatar link' do 
-                image_tag(user_avatar(user: user, size: '25'), class: 'ui avatar image')
-            end %>
-            <div class="notification content">
-                <!-- name link -->
-                <%= link_to name, user_path(user), class: 'header' %>
-                <div class="description">
-                    <!-- message -->
-                    <%= n.to_notification.message %>
-                    <!-- link to where the action came from -->
-                    <%= link_to n.to_notification.type, n.to_notification.url %>
-                    <div class='notification time'>
-                        <%= time_ago_in_words(n.created_at) %> ago
+        <li class="border-top  <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
+            <a href="#">
+                <!-- variables -->
+                <% user = User.find n.to_notification.user.id %>
+                <% name = user.first_name.capitalize %>
+                <!-- image link-->
+                <%= image_tag(user_avatar(user: user, size: '25'), class: 'ui avatar image')%>
+                <div class="notification content">
+                    <!-- name link -->
+                    <span class="title"><%=  name %></span>
+                    <div class="description">
+                        <!-- message -->
+                        <%= n.to_notification.message %>
+                        <!-- link to where the action came from -->
+                        <span><%=  n.to_notification.type %></span>
+                        <div class='notification time'>
+                            <%= time_ago_in_words(n.created_at) %> ago
+                        </div>
+                        
                     </div>
-                    
                 </div>
-            </div>
-        </div>
+            </a>
+        </li>
     <% end %><!-- end loop -->
 <% end %><!-- end if -->
