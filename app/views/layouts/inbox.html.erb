@@ -58,15 +58,10 @@
                     <%= render partial: 'layouts/menus/dropdown_list' %>
                 </ul>
             </nav>
-
         </div>
-
-
-        
-       
-
     </header>
-            <!-- notifications -->
+
+            <!-- error notifications -->
             <% unless notice.nil? %>
             <div style="margin: 20px;">
                 <div class="ui positive message">
@@ -81,45 +76,52 @@
                 </div>
             </div>
             <%end%>
-        <!-- end notifications -->
+        <!-- end error notifications -->
 
-        <div class="messageBoxs">
-        <div class="messages">
-            <div class="messageHeader">Messages</div>
-            <!--<select  class="ui fluid dropdown" name="messageSelect" id="messageSelect" >
-                <option value="inbox">Inbox</option>
-                <option value="outbox">Outbox</option>
-                <option value="trash">Trash</option>
-            </select>-->
-            <div class="messageList">
-                <% @conversations.each do |conversation| %>
-                <div class="ui cards">
-                    <div class="card">
-                        <% if from(conversation, current_user).avatar.attached? %>
-                            <%= image_tag( tiny(from(conversation, current_user).avatar), class:'userImage inbox', style:'border-radius: 25px!important;') %>
-                        <% else %>
-                            <%= image_tag asset_path('userImage.png'), class: 'userImage inbox', alt: 'User Avatar'%>
-                        <% end %>
-                        <a class="messageContent" href="<%= conversation_path(conversation) %>" >
-                            <div class="from">From: <%= from(conversation, current_user).name %> </div>
-                            <div class="description">Subject: <%= conversation.subject %></div>
-                        </a>
-                    </div>
-                </div>
+
+    <div class="left-sidebar">
+        <header>
+            <!-- search fild -->
+            <div class="search">
+                <%= form_with url: "/search", method: :get do |form| %>
+                    <%= form.text_field :query, placeholder: "Search messages.."%>
+                    <button type="submit" name="commit" class="btn btn-success">
+                        <i class='far fa-search'></i>
+                    </button>
                 <% end %>
-
-
             </div>
-        </div>
-        <div class="messageDisplay">
+            <div class="nav-messages">
+                <ul>
+                    <li><a class="active" href="#">All</a></li>
+                    <li><a href="#">Unread</a></li>
+                    <li><a href="#">Deleted</a></li>
+                </ul>
+            </div>
+        </header>
 
+        <div class="messageList">
+            <%= render partial: 'conversations/list_messages' %>
+        </div>
+    </div>
+
+    <div class="message-content">
          <!-- content -->
-        <%= yield %>
-        <!-- end content -->
+         <%= yield %>
+         <!-- end content -->
+    </div>
 
+    <div class="right-sidebar">
+        <div class="info">
+            <div class="search"></div>
+            <nav class="nav"></nav>
+        </div>
+        <nav>
+
+        </nav>
+        <div class="attachments">
+            <h3>Attachments</h3>
         </div>
     </div>
-        
-    </div>
+
   </body>
 </html>

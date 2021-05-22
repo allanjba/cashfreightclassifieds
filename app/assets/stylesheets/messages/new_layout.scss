@@ -44,3 +44,119 @@
         align-items: center;
     }
 }
+// Side Bars
+.left-sidebar {
+    float: left;
+    background-color: var(--lighter-bg-color);
+    height: calc(100% - 47px);
+    width: 15vw;
+
+    .search {
+        padding: 25px;
+        form{
+            position: relative;
+            input {
+                border: none;
+                border-radius: 20px;
+                height: 35px;
+                width: 100%;
+                padding: 0 10px;
+                padding-right: 45px;
+            }
+            button {
+                position: absolute;
+                border: none;
+                background: none;
+                right: 14px;
+                height: 35px;
+                width: 35px;
+                cursor: pointer;
+                color: var(--lighter-text-color);
+            }
+        }
+        
+    }
+    .nav-messages {
+        ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            justify-content: space-evenly;
+        }
+        li {
+            float: left;
+            padding: 0;
+            a {
+                width: 100%;
+                height: 20px;
+                padding: 10px 20px;
+                color: var(--light-text-color);
+                &.active {
+                    font-weight: bold;
+                    color: var(--main-color);
+                    border-bottom:  var(--main-color) solid 3px;
+                    border-radius: 2px;
+                }
+                &:hover {
+                    color: var(--main-color);
+                }
+            }
+            
+            
+        }
+    }
+    .message-item {
+        .avatar {
+            border-radius: 50px;
+            margin-right: 14px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .name {
+            color: var(--dark-text-color);
+            font-size: 14;
+            font-weight: bold;
+
+        }
+        .subject {
+            font-size: 12px;
+            color: var(--light-text-color);
+        }
+        .date {
+            position: absolute;
+            right:25px;
+            top: 18px;
+            font-size: 10px;
+            color: var(--lighter-text-color);;
+        }
+        a {
+            position: relative;
+            display: flex;
+            padding: 10px 24px;
+            cursor: pointer; 
+            & > * {
+                float: left;
+            }
+        }
+        
+        &.unread {
+            background-color: #E5F0FA;
+            border-top: var(--light-border-color) solid 1px;
+            border-bottom: var(--light-border-color) solid 1px;
+
+        }
+        &.active {
+            background-color: white;
+            .name {
+                color: var(--main-color);
+            }
+        }
+        &:hover {
+            background: var(--hover-bg-color);
+        }
+    }
+
+}

@@ -5,7 +5,7 @@
     <!-- Each user notification for messages in DESCENDING order. (Can use 'ASC')  with uniq params( uniq groups messages from conversations into one notification)-->
     <% current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').uniq(&:params).each do |n| %>
         <li class="border-top  <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
-            <a href="#">
+            <a href="<%= n.to_notification.url %>">
                 <!-- variables -->
                 <% user = User.find n.to_notification.user.id %>
                 <% name = user.first_name.capitalize %>

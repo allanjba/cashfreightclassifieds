@@ -4,7 +4,7 @@
 <% if current_user.present? %>
     <!-- Each user Notifications in DESCENDING order. Can use 'ASC' -->
     <!-- Add where.not type message -->
-    <% current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').each do |n| %>
+    <% user_notifications.each do |n| %>
         <li class="border-top <%= 'unread' if n.unread? %>" data-notification-id="<%=n.id%>" data-remote="true">
             <% case n.type %>
             <% when "BidNotification" %>

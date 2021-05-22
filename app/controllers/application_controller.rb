@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+    include ActionView::Helpers::DateHelper
 
 
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -53,11 +53,39 @@ class ApplicationController < ActionController::Base
     end
     def notification_unread_size
         if current_user && current_user.notifications.where.not(type: 'MessageNotification').unread.any?
-            current_user && current_user.notifications.where.not(type: 'MessageNotification').unread.size
+            current_user.notifications.where.not(type: 'MessageNotification').unread.size
         else
             0
         end
     end
 
-    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar, :notification_unread_size, :message_unread_size
+    def user_message_notifications 
+        current_user.notifications.where(type: 'MessageNotification').order('created_at DESC').uniq(&:params).first(8)
+    end
+    def user_notifications
+        if notification_unread_size > 10
+            current_user.notifications.where.not(type: 'MessageNotification').unread.order('created_at DESC')
+        else
+            current_user.notifications.where.not(type: 'MessageNotification').order('created_at DESC').first(8)
+        end
+    end
+
+    def sent_at conversation
+       time = conversation.messages.last.created_at.localtime
+
+       if time.hour > Time.now.localtime.hour - 1
+            time_ago_in_words(time)
+       elsif time.today?
+            time.strftime("%I:%M%p") 
+       elsif time.year == Time.now.year
+        # shows date
+            time.strftime("%m/%d") 
+       else
+        # shows year
+            time.strftime("%m/%y") 
+       end
+        
+    end
+
+    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar, :notification_unread_size, :message_unread_size, :user_message_notifications, :user_notifications , :sent_at
 end

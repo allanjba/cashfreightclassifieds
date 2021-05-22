@@ -1,0 +1,24 @@
+ <!-- list loop -->
+ <% @conversations.each do |conversation| %>
+ <!-- check if inside conversation, return active class -->
+ <% if @conversation.id == conversation.id then active = "active" end %>
+<div class="message-item <%= active %>">
+    <a href="<%= conversation_path(conversation) %>">
+        <% user =  from(conversation, current_user) %>
+        <div class="image">
+            <%= image_tag(user_avatar(user: user, size: '48'), class: 'avatar') %>
+        </div>
+        <div class="content">
+            <div class="name">
+                <%= user.name %> 
+            </div>
+            <div class="subject">
+                <%= conversation.subject %>
+            </div>
+        </div>
+        <div class="date"><%= sent_at(conversation) %></div>
+    </a>
+</div>
+<% end %>
+<!-- end list loop -->
+<%= console %>
