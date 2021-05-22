@@ -22,11 +22,9 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def sender_class(receipt, user)
-        if receipt.id == user.id
-          "room_owner"
-        else
-          "room_user"
+    def my_message_class(receipt)
+        if receipt.message.sender.id == current_user.id
+          "my-messages"
         end
     end
 
@@ -87,5 +85,15 @@ class ApplicationController < ActionController::Base
         
     end
 
-    helper_method :favorite_text, :saved_class, :sender_class, :conversation_exists?, :user_avatar, :notification_unread_size, :message_unread_size, :user_message_notifications, :user_notifications , :sent_at
+    helper_method   :favorite_text, 
+                    :saved_class, 
+                    :sender_class, 
+                    :conversation_exists?, 
+                    :user_avatar, 
+                    :notification_unread_size, 
+                    :message_unread_size,
+                    :user_message_notifications, 
+                    :user_notifications, 
+                    :sent_at, 
+                    :my_message_class
 end
