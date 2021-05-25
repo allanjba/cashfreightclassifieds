@@ -1,6 +1,6 @@
 require 'faker'
 
-names = ['Carl', 'Wright', 'Audrey', 'Cameron', 'Trevor',	'Burgess', 'Wanda',	'Edmunds', 'Carol',	'Henderson', 'Michael',	'King', 'Warren', 'Burgess' 'Brandon', 'Berry', 'Adam',	'Short', 'Heather',	'Clarkson', 'Samantha',	'Churchill']
+names = ['Carl', 'Wright', 'Audrey', 'Cameron', 'Trevor',	'Burgess', 'Wanda',	'Edmunds', 'Carol',	'Henderson', 'Michael',	'King', 'Warren', 'Burgess', 'Brandon', 'Berry', 'Adam', 'Short', 'Heather', 'Clarkson', 'Samantha', 'Churchill']
 cities = [{city: 'Mesa', state: 'Arizona'},{city: 'Anaheim', state: 'California'},{city: 'Atlanta', state: 'Georgia'},{city: 'Reno', state: 'Nevada'},{city: 'Toledo', state: 'Ohio'}]
 avatars = Unsplash::Photo.search('face', 1, 100)
 

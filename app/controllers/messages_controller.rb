@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
             format.html { redirect_to conversation_path(@receipt.conversation) }
             format.js
             MessageNotification.with({conversation: @conversation.id, user: current_user}).deliver_later(from(@conversation, current_user))
+            ActionCable.server.broadcast("conversation_channel_#{@conversation.id}", {body: @receipt.message.body, user: current_user.id, conversation: @conversation.id.to_s})
         end
     end
 

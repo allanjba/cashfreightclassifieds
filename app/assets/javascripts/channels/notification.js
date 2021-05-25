@@ -7,7 +7,6 @@ App.notification = App.cable.subscriptions.create("Noticed::NotificationChannel"
       
     },
     received: function(data) {
-      console.log("rendering");
       $.get( "/notifications/nav-show");
       
     }

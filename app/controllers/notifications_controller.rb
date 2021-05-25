@@ -6,6 +6,7 @@ class NotificationsController < ApplicationController
     end
 
     def nav_show
+        @conversations = current_user.mailbox.conversations
         respond_to do |format|
             format.js
         end
@@ -21,5 +22,15 @@ class NotificationsController < ApplicationController
             end
         end
     end
+
+    # check convercetion for sender
+    def from(conversation, current_user)
+        participants = conversation.participants - [current_user]
+        participant = participants.first
+        return participant
+    end
+    helper_method :from
+
+
 
 end

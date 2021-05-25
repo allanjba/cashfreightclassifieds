@@ -5,6 +5,9 @@
 
     &.dashboard {
         padding: 10px 20px;
+        position: fixed;
+        z-index: 100;
+        width: 100vw;
 
         .icon{
             margin: 0 10px;
@@ -46,9 +49,10 @@
 }
 // Side Bars
 .left-sidebar {
-    float: left;
+    position: fixed;
     background-color: var(--lighter-bg-color);
-    height: calc(100% - 47px);
+    height: 100vh;
+    padding-top: 47px;
     width: 20%;
 
     .search {
@@ -167,17 +171,96 @@
 
 }
 .right-sidebar {
-    float: left;
+    position: fixed;
+    top: 0;
+    right: 0;
     background-color: var(--lighter-bg-color);
-    height: calc(100% - 47px);
+    height: 100vh;
+    padding-top: 47px;
     width: 20%;
+    h3 {
+        font-size: 14px;
+        font-weight: bold;
+        margin: 3px;
+    }
+    p {
+        font-size: 12px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 45px 20px 20px;
+        color: var(--dark-blue-color);
+        .name{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .username {
+            font-size: 12px;
+        }
+    }
+    .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+    }
+    .more-info {
+        color: var(--dark-blue-color);
+        letter-spacing: 0.5px;
+        margin: 20px 40px;
+        & > * {
+            margin-bottom: 20px;
+        }
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        margin: 33px;
+        a {
+            color: var(--dark-blue-color);
+            &:hover{
+                color:var(--main-color);
+            }
+        }
+        & > * {
+            margin: 5px 0;
+        }
+    }
+    .attachments {
+        margin: 20px 40px;
+    }
 
 }
 section.conversation {
-    float: left;
     position: relative;
-    height: calc(100% - 47px);
+    min-height: 100vh;
     width: 60%;
+    margin: 0 20%;
+    padding-top: 50px;
+
+    .inbox-messages {
+        display: grid;
+    padding-bottom: 110px;
+    }
+    .message{
+        width: max-content;
+        color: var(--dark-text-color);
+        border-radius: 20px;
+        background: var(--lighter-bg-color);
+        padding: 10px 15px;
+        margin:3px auto 3px 30px;
+        &.my-messages {
+            background: var(--main-color);
+            color: white;
+            display: block;
+            margin:3px 30px 3px auto;
+            text-align: right;
+        }
+
+    }
     .message-input {
         position: absolute;
         bottom: 0;
@@ -203,17 +286,18 @@ section.conversation {
                 }
             }
             &.button {
-                
                 background-color: var(--secondary-color) ;
                 color: var(--dark-text-color) ;
                 cursor: pointer;
-
+                &:hover {
+                    background: #ffcf42;
+                }
             }
 
         }
         .buttons {
             position: absolute;
-            bottom:44px;
+            bottom:30px;
             right:30px;
             cursor: pointer;
             display: flex;
@@ -221,6 +305,12 @@ section.conversation {
         }
         #attach {
             color: var(--light-text-color);
+            &::after{
+                content: "";
+                width: 20px;
+                height: 20px;
+                background: var(--light-bg-color);
+            }
         }
         .textarea {
             display: block;

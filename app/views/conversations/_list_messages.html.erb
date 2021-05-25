@@ -1,8 +1,13 @@
  <!-- list loop -->
  <% @conversations.each do |conversation| %>
  <!-- check if inside conversation, return active class -->
- <% if @conversation.id == conversation.id then active = "active" end %>
-<div class="message-item <%= active %>">
+ <% if @conversation.present? && @conversation.id == conversation.id %>
+    <% css_class = "active" %>
+ <% elsif conversation.is_unread? current_user%>
+    <% css_class = "unread" %>
+ <% end %>
+
+<div class="message-item <%= css_class %>">
     <a href="<%= conversation_path(conversation) %>">
         <% user =  from(conversation, current_user) %>
         <div class="image">

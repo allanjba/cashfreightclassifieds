@@ -15,7 +15,7 @@
 <body>
     <!-- track user -->
     <% if current_user.present? %>
-        <div style="display: none;" data-user-id="<%=current_user.id%>"></div>
+        <div style="display: none;" id="data-user-id" data-user-id="<%=current_user.id%>"></div>
     <% end %>
     
     <!-- header -->
@@ -99,7 +99,7 @@
             </div>
         </header>
 
-        <div class="messageList">
+        <div id="render-message-list" class="messageList">
             <%= render partial: 'conversations/list_messages' %>
         </div>
     </div>
@@ -109,19 +109,37 @@
         <%= yield %>
         <!-- end content -->
     </section>
+    <% if @conversation.present? %>
+        <% user = from(@conversation, current_user )%>
+        <div class="right-sidebar">
+        
+            <div class="info">
+                <div class="avatar"><%= image_tag(user_avatar(user: user, size: '150'), class: 'avatar') %></div>
+                <div class="name"><%= user.name %></div>
+                <div class="username">@<%= user.username %></div>
+            </div>
 
-    <div class="right-sidebar">
-        <div class="info">
-            <div class="search"></div>
-            <nav class="nav"></nav>
+            <div class="more-info">
+                <div class="from">
+                    <h3>From</h3>
+                    <p><%= user.city %>, <%= user.state %>  </p>
+                </div>
+                <div class="contact">
+                    <h3>Contact information</h3>
+                    <p><%= user.email %></p>
+                    <p><%= user.phone %></p>
+                </div>
+            </div>
+            <nav>
+                <a href="" class="profile"><i class='far fa-user'></i>See Profile</a>
+                <a href="" class="profile"><i class='far fa-list'></i>View listings</a>
+                <a href="" class="profile"><i class='far fa-flag'></i>Report User</a>
+            </nav>
+            <div class="attachments">
+                <h3>Attachments</h3>
+                <p>This conversation has no attachments</p>
+            </div>
         </div>
-        <nav>
-
-        </nav>
-        <div class="attachments">
-            <h3>Attachments</h3>
-        </div>
-    </div>
-
+    <% end %>
   </body>
 </html>

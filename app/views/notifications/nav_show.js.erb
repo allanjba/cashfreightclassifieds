@@ -8,5 +8,6 @@
     $("#messages-notification-menu .render-notifications").html("<%= j render 'notifications/items/message_notification_item' %>");
     $("#messages-notification-menu .notification-size").show();
     $("#messages-notification-menu .notification-size").text("<%= message_unread_size %>");
+    $("#render-message-list").html("<%= j render 'conversations/list_messages' %>");
 <% end %>
 
