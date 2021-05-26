@@ -22,7 +22,7 @@ document.addEventListener('turbolinks:load', () =>{
           my_messages = ""
         }
         $(`#conversation-id[data-conversation-id='${data.conversation}']` ).append( "<div class='message "+my_messages+"'><span>"+data.body+ "</span></div>");
-        document.getElementById("message-form").scrollIntoView();
+        document.getElementById("conversation-id").lastElementChild.scrollIntoView();
         $.get( "/conversations/read/"+data.conversation);
         }
 

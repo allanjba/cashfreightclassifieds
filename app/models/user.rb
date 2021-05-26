@@ -34,6 +34,11 @@ class User < ApplicationRecord
   def name
     return "#{first_name}" 
   end
+  
+  def full_name
+    return "#{first_name} #{last_name}" 
+  end
+
   def mailboxer_email(object)
     return email
   end

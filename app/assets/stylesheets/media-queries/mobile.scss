@@ -36,10 +36,70 @@
             }
         }
     }
+    .bread-nav {
+        display: block;
+        &.fixed {
+            position: fixed;
+        }
+    }
 
     // nav ul {
     //     opacity: 1;
     //     visibility: visible;
     //     display: none;
     // }
+
+    .left-sidebar {
+        width: 100%;
+    }
+    .right-sidebar {
+        left: 100vw;
+        width: 100vw;
+    }
+    .conversation.container {
+        background: white;
+        // right: -100vw;
+        width: 100%;
+        margin: 0;
+        left: 100vw;
+        transition: left 200ms ease 0s; 
+        .message-input {
+            width: 100vw;
+        }
+    }
+    .bread-left  {
+        float: left;
+        & > * {
+            float: left;
+            margin: 11px 5px;
+        }
+        i, svg {
+            height: 30px;
+        }
+    }
+    .bread-right {
+        float: right;
+        & > * {
+            float: right;
+            margin: 11px 5px;
+        }
+        i, svg {
+            height: 30px;
+            width: 30px!important;
+        }
+    }
+    .user.info {
+        display: flex;
+        align-items: center;
+        .avatar {
+            border-radius: 15px;
+            margin-right: 10px;
+            height: 30px;
+        }
+    }
+    .inbox-messages {
+        padding-top: 65px;
+    }
+
+
 }

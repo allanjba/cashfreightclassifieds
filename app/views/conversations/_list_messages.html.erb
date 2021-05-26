@@ -8,7 +8,7 @@
  <% end %>
 
 <div class="message-item <%= css_class %>">
-    <a href="<%= conversation_path(conversation) %>">
+    <a href="<%= conversation_path(conversation) %>" data-remote="true">
         <% user =  from(conversation, current_user) %>
         <div class="image">
             <%= image_tag(user_avatar(user: user, size: '48'), class: 'avatar') %>

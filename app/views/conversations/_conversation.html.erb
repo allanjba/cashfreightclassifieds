@@ -1,0 +1,23 @@
+<div id="conversation-id" class="inbox-messages" data-conversation-id="<%= @conversation.id%>">
+    <% @conversation.receipts_for(current_user).order(created_at: :asc).each do |receipt| %>
+        <!-- message container -->
+        <div class="message <%= my_message_class(receipt) %>">
+            <!-- message body -->
+            <span><%= receipt.message.body.html_safe %></span>
+        </div>
+    <% end %>
+</div>
+
+
+<div class="message-input">
+    <!-- add remote true later for ajax-->
+    <%= form_tag conversation_messages_path(@conversation), method: :post, remote: true, id: "message-form"  do %>
+        <%= text_field_tag :body, '', class: 'field' %>
+        <span class="textarea" role="textbox" contenteditable id='span-body'></span>
+        <div class="buttons">
+            <i id="attach" class="far fa-paperclip"></i>
+            <%= submit_tag "Send", class: 'button' %>
+        </div>
+        
+    <% end %>
+</div>

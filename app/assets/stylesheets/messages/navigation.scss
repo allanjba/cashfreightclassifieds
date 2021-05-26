@@ -81,7 +81,7 @@ nav {
             }
             &:active {
                 background: var(--active-bg-color);
-                transition: background 100ms ease 0s, 
+                transition: background 100ms ease 0s; 
             }
 
             img {
@@ -185,4 +185,16 @@ nav.mobile {
         }
     }
     
+}
+.bread-nav {
+    display: none;
+    width: 100%;
+    height: 56px;
+    background: var(--light-bg-color);
+    color: var(--main-color);
+    font-weight: bold;
+    #open-right-sidebar, #close-right-sidebar, #close-conversation {
+        cursor: pointer;
+    }
+
 }

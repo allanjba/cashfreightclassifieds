@@ -1,0 +1,7 @@
+$("#conversation-content").html("<%= j render 'conversations/conversation' %>");
+document.getElementById("conversation-id").lastElementChild.scrollIntoView();
+$(".right-sidebar").html("<%= j render 'conversations/user_sidebar' %>");
+$(".user.info").html("<%= escape_javascript(image_tag(user_avatar(user: @user, size: '30'), class: 'avatar')) %><div class='name'><%= @user.full_name %></div>");
+
+
+

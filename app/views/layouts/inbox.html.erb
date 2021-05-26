@@ -105,41 +105,30 @@
     </div>
 
     <section class="conversation container">
-        <!-- content -->
-        <%= yield %>
-        <!-- end content -->
-    </section>
-    <% if @conversation.present? %>
-        <% user = from(@conversation, current_user )%>
-        <div class="right-sidebar">
-        
-            <div class="info">
-                <div class="avatar"><%= image_tag(user_avatar(user: user, size: '150'), class: 'avatar') %></div>
-                <div class="name"><%= user.name %></div>
-                <div class="username">@<%= user.username %></div>
+        <div class="bread-nav fixed">
+            <div class="bread-left">
+                <div id="close-conversation" class="icon back"><i class='far fa-arrow-left'></i></div>
+                <!-- user avatar and name -->
+               
+                    <div class="user info">
+                        <!-- messages show.js -->
+                    </div>
+                
             </div>
-
-            <div class="more-info">
-                <div class="from">
-                    <h3>From</h3>
-                    <p><%= user.city %>, <%= user.state %>  </p>
-                </div>
-                <div class="contact">
-                    <h3>Contact information</h3>
-                    <p><%= user.email %></p>
-                    <p><%= user.phone %></p>
-                </div>
-            </div>
-            <nav>
-                <a href="" class="profile"><i class='far fa-user'></i>See Profile</a>
-                <a href="" class="profile"><i class='far fa-list'></i>View listings</a>
-                <a href="" class="profile"><i class='far fa-flag'></i>Report User</a>
-            </nav>
-            <div class="attachments">
-                <h3>Attachments</h3>
-                <p>This conversation has no attachments</p>
+            <div class="bread-right">
+                <div id="open-right-sidebar" class="info-button"><i class='far fa-info-circle'></i></div>
             </div>
         </div>
-    <% end %>
+        <!-- content -->
+        <div id="conversation-content">
+            <%= yield %>
+        </div>
+        
+        <!-- end content -->
+    </section>
+    
+    <div class="right-sidebar">
+        <%= render partial: 'conversations/user_sidebar' %>
+    </div>
   </body>
 </html>

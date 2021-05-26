@@ -1,0 +1,35 @@
+<% if @conversation.present? %>
+    <% user = from(@conversation, current_user )%>
+    <div class="bread-nav">
+        <div class="bread-left">
+            <!-- onclick needs to load with the buttom -->
+            <div id="close-right-sidebar" class="icon back" onclick="$('.right-sidebar').css('left', '100%');"><i class='far fa-arrow-left'></i> </div>
+        </div>
+    </div>
+    <div class="info">
+        <div class="avatar"><%= image_tag(user_avatar(user: user, size: '150'), class: 'avatar') %></div>
+        <div class="name"><%= user.name %></div>
+        <div class="username">@<%= user.username %></div>
+    </div>
+
+    <div class="more-info">
+        <div class="from">
+            <h3>From</h3>
+            <p><%= user.city %>, <%= user.state %>  </p>
+        </div>
+        <div class="contact">
+            <h3>Contact information</h3>
+            <p><%= user.email %></p>
+            <p><%= user.phone %></p>
+        </div>
+    </div>
+    <nav>
+        <a href="<%= user_path user %>" class="profile"><i class='far fa-user'></i>See Profile</a>
+        <a href="<%= user_path user %>" class="profile"><i class='far fa-list'></i>View listings</a>
+        <a href="#" class="profile"><i class='far fa-flag'></i>Report User</a>
+    </nav>
+    <div class="attachments">
+        <h3>Attachments</h3>
+        <p>This conversation has no attachments</p>
+    </div>
+<% end %>

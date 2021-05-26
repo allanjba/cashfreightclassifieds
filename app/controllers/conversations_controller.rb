@@ -11,6 +11,7 @@ class ConversationsController < ApplicationController
         @conversations = filterConversations
         @conversation = current_user.mailbox.conversations.find(params[:id])
         @conversation.mark_as_read(current_user)
+        @user = from(@conversation, current_user)
         notifications = current_user.notifications.where('params @> ?', {conversation: @conversation.id}.to_json)  
         notifications.mark_as_read!
         respond_to do |format|

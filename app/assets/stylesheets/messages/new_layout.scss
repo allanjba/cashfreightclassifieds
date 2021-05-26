@@ -178,6 +178,7 @@
     height: 100vh;
     padding-top: 47px;
     width: 20%;
+    transition: left 200ms ease 0s;
     h3 {
         font-size: 14px;
         font-weight: bold;
@@ -239,7 +240,7 @@ section.conversation {
     min-height: 100vh;
     width: 60%;
     margin: 0 20%;
-    padding-top: 50px;
+    padding-top: 49px;
 
     .inbox-messages {
         display: grid;
@@ -262,10 +263,11 @@ section.conversation {
 
     }
     .message-input {
-        position: absolute;
+        position: fixed;
         bottom: 0;
-        width: 100%;
+        width: 60%;
         padding: 30px;
+        background: white;
         input {
             position: relative;
             border: none;

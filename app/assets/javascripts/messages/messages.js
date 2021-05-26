@@ -4,7 +4,8 @@ $( document ).on('turbolinks:load', function() {
   console.log("Messages");
   $('.ui.dropdown').dropdown();
 
-  document.getElementById("message-form").scrollIntoView();
+  // force messages scroll to bottom
+  // document.getElementById("conversation-id").lastElementChild.scrollIntoView();
 
   $('#message-form').submit(function(){
     length = $('#span-body').html().length;
@@ -15,6 +16,26 @@ $( document ).on('turbolinks:load', function() {
       $('#body').val(val);
     }
   });
+  $('#open-right-sidebar').click(function() {
+    $(".right-sidebar").css("left", "0");
+  });
+  // not loading into dom so doesn't work  
+  // $('body #close-right-sidebar').click(function() {
+  //   $(".right-sidebar").css("left", "100%");
+  // });
+
+  $('#close-conversation').click(function() {
+    $(".conversation.container").css("left", "100vw");
+  });
+
+  $('.message-item').click(function() {
+    $(".user.info").html("");
+    $("#conversation-content").html("Loading");
+    $(".conversation.container").css("left", "0");
+    
+  });
+  
+  
   
 
   // menu mobile
@@ -41,6 +62,7 @@ $( document ).on('turbolinks:load', function() {
         $('.header nav header').hover( function(){
           $(this).parent().addClass('hover');
         });
+        $('.right-sidebar').removeAttr("style");
       }
   });
 
@@ -71,6 +93,9 @@ $( document ).on('turbolinks:load', function() {
   }
   function removeInlineStyles() {
     $('.dashboard.header ul').removeAttr("style");
+  }
+  function closeRightSidebar() {
+    $(".right-sidebar").css("left", "100%");
   }
 
  
