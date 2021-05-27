@@ -5,6 +5,7 @@
                 .bid_price_plus(i)  - The current bid plus 'i' in a decimal string (1) - "101.00"
                 .highest_bidder    - Returns object
                 .time_remaining     - String "Time left: 10d 10h 10m 10s"
+                # bring this format to application.js in this format "Jan 5, 2022 15:37:25"
                 .closes_at          - String "Ends 10/10 at 10:10AM"
                 .auction_is_active? - True or false
 
@@ -44,6 +45,39 @@
 
     <div class="adContainer" >
         <div id="adDetail" class="ui link cards">
+            <!-- Place a bid -->
+            <% if @product.is_auction && @product.auction_is_active? %>
+            <!-- ACTIVE AUCTION -->
+                <div id="auction" class="ui card">
+                    <h3 style="margin-left: 38%">Place a Bid</h3>
+                    <div style="display: flex; justify-content: space-between">
+                        <div style="margin: 5px">
+                            <p>Time left: <%= @product.time_remaining %></p>
+                            <p><%= @product.closes_at%></p>
+                            <p> Listing has <span class="bids-size" data-product-id="<%= @product.id %>"><%= @product.bids.size %></span> bids</p>
+                        </div>
+                        <div style="margin: 5px">
+                            <p>Current price: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
+                            <!-- show form products/_form-bid if not the highest bidder -->
+                            <div class="display-bid-form" data-product-id="<%= @product.id %>" style="<%='display: none;' if current_user == @product.highest_bidder %>">
+                                <%= render 'form-bid' %>
+                            </div>
+                            <p class="highest-bidder" data-product-id="<%= @product.id %>" style="<%='display: none;' unless current_user == @product.highest_bidder %>"><%="You are the highest bidder"%></p>
+                        </div>
+                    </div>
+                </div>
+            <!-- END ACTIVE AUCTION -->
+            <% elsif @product.is_auction && !@product.auction_is_active? %>
+            <!-- CLOSED AUCTION-->
+                <div id="auction" class="ui card">
+                    <h3 style="margin-left: 32%">Auction is closed</h3>
+                    <p style="margin: 5px">Sold for: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
+                </div>
+            <!-- END CLOSED AUCTION-->
+            <% else %>
+                
+            <% end %>
+                <!-- end of Place a bid -->
             <div id="detailCard" class="ui card">
                 <div class="content">
                     <div id="detailMainHeader" class="ui header"><%= @product.title %>
@@ -90,33 +124,7 @@
             Back to Listings...
         </a>
     </div>
-    <!-- Place a bid -->
-    <% if @product.is_auction && @product.auction_is_active? %>
-    <!-- ACTIVE AUCTION -->
-        <div id="auction">
-            <h3>Place a Bid</h3>
-            <p>Current price: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
-            <p>Time left: <%= @product.time_remaining %></p>
-            <p><%= @product.closes_at%></p>
-            <!-- show form products/_form-bid if not the highest bidder -->
-            <div class="display-bid-form" data-product-id="<%= @product.id %>" style="<%='display: none;' if current_user == @product.highest_bidder %>">
-                <%= render 'form-bid' %>
-            </div>
-            <p class="highest-bidder" data-product-id="<%= @product.id %>" style="<%='display: none;' unless current_user == @product.highest_bidder %>"><%="You are the highest bidder"%></p>
-            <p> Listing has <span class="bids-size" data-product-id="<%= @product.id %>"><%= @product.bids.size %></span> bids</p>
-        </div>
-    <!-- END ACTIVE AUCTION -->
-    <% elsif @product.is_auction && !@product.auction_is_active? %>
-    <!-- CLOSED AUCTION-->
-        <div id="auction">
-            <h3>Auction is closed</h3>
-            <p>Sold for: <span class="product-price" data-product-id="<%= @product.id %>">$<%= @product.current_bid_price %></span></p>
-        </div>
-    <!-- END CLOSED AUCTION-->
-    <% else %>
-        
-    <% end %>
-        <!-- end of Place a bid -->
+    
     <!-- Side ads -->
     <div id="adsContainer">
         <div id="recentAds" class="ui center aligned black segment">

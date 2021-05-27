@@ -13,12 +13,9 @@
   <% elsif @title.present? %>
     <%= @title %>
   <% else %>
-    Most Recent ...
+    Most Recent Buy It Now ...
   <% end %>
 </h2>
-<div class="container">
-  <div id="ads" class="ui link cards"></div>
-</div>
 
 <div class="container">
   <div id="ads" class="ui link cards">
@@ -54,7 +51,65 @@
               <% if user_signed_in? %>
                 <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
               <% else %>
-                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Whatch List', new_user_session_path %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Watch List', new_user_session_path %>
+              <% end %>
+              </span>
+
+      
+
+
+          </div>
+      </div>
+    <% end %>
+      
+  </div>
+</div>
+<!-- Allan place Auction Items below this -->
+<h2 class="ui grey header">
+  <% if params[:query].present? %>
+    Search results for: "<%= params[:query] %>"
+  <% elsif @title.present? %>
+    <%= @title2 %>
+  <% else %>
+    Auctions Ending Soon ...
+  <% end %>
+</h2>
+
+<div class="container">
+  <div id="ads" class="ui link cards">
+
+    <!-- cards -->
+    <% @products.each do |product| %>
+
+      <div class="ui card">
+            <%= link_to image_tag(card(product.images.last)), product, class: 'image'  %>
+          <div class="content">
+              <div class="ui header"><%= product.title %>
+                  <div class="sub header">
+                    <% if product.is_auction %>
+                        Current Bid $<span  class="product-price" data-product-id="<%= product.id %>"><%= product.current_bid_price %></span>
+                    <% else %>
+                        <%= number_to_currency(product.price, :precision => 2) %>
+                    <% end %>
+                  </div>
+              </div>
+              <div class="meta">
+                  <span class="timeRemaining"></span>
+                  <% product.categories.each do |categorie| %> 
+                      <%= link_to categorie.name, categorie %>
+                  <% end %>
+              </div>
+          </div>
+          <div class="extra content">
+              <span class="left floated eye">
+                  <i class="eye icon"></i>
+                  <%= product.views %>
+              </span>
+              <span id="favorite_span_<%= product.id%>" class="right floated clipboard list <%= saved_class(product) %>">
+              <% if user_signed_in? %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + favorite_text(product), favorites_update_path(product: product), id: "favorite_link_#{product.id}", remote: true %>
+              <% else %>
+                <%= link_to "<i class='clipboard list icon'></i> ".html_safe + 'Watch List', new_user_session_path %>
               <% end %>
               </span>
 
