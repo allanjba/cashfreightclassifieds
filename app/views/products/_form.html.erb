@@ -29,33 +29,26 @@
 
     <h3>Pricing</h3>
 
-    <div class="inline field">
-        <%= form.check_box :is_auction %>
-        <%= form.label :auction %>
+    <div id='checkboxes' class=field style="display: flex;">
+        <div class="inline field" style="margin-right: 5px">
+            <%= form.check_box :is_auction %>
+            <%= form.label :auction %>
+        </div>
+        <div class="inline field">
+            <%= form.check_box :is_sale %>
+            <%= form.label :buy_it_now %>
+        </div>
     </div>
-    <div class=" field">
+    <div class="field auctionInput">
         <%= form.label :starting_price %>
         <%= form.text_field :auction_starting_price %>
     </div>
-    <div class="field">
+    <div class="field auctionInput">
         <%= form.label :auction_duration %>
         <%= form.text_field :auction_duration %>
     </div>
 
-    <div class="inline field">
-        <%= form.check_box :is_sale %>
-        <%= form.label :buy_it_now %>
-    </div>
-    <div class=" field">
-        <%= form.label :sale_price %>
-        <%= form.text_field :sale_price %>
-    </div>
-
-    <div class="inline field">
-        <%= form.check_box :no_sale %>
-        <%= form.label :no_sale %>
-    </div>
-    <div class="field">
+    <div class="field buyItInput">
         <%= form.label :price %>
         <div id='price-imput'>
             <span>$</span><%= form.text_field :price, onkeypress: 'return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))'%>
@@ -74,9 +67,10 @@
     <div class="field">
         <label>Photos</label>
         <div class="photos">
-            <div class="container">
-                <%= form.label :images %>
-                <%= form.file_field :images, multiple: true %>
+            <div class="container" style='display: flex;'>
+                <label for='product_images' class='ui primary button'>Upload Image</label>
+                <%= form.file_field :images, multiple: true, style: 'display: none' %>
+                <input type='text' id='fakeInput' style='width: 79.5%' />
             </div>
         </div>
     </div>

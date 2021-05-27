@@ -5,10 +5,11 @@
     // removes previous errors from page
     $("#bid-errors").remove();
     //creates paragraph where errors will show
-    $("#bid-form").append('<p id="bid-errors"></p>');
+    $("#auction").append('<div id="bid-errors" style="margin-left: 45%; color: red"></div>');
     <% @bid.errors.full_messages.each do |error| %>
         $("#bid-errors").append('<%=error%><br/>');
     <%end%>
 <% else %>
-    $("#bg-load-message").hide()
+    $("#bg-load-message").hide();
+    $("#bid-errors").hide();
 <% end %>
