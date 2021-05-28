@@ -1,0 +1,7 @@
+.main-nav a.sign-in {
+    background: var(--main-lighter-color)!important;
+    &:hover {
+        background: var(--secondary-color)!important;
+    }
+    
+}

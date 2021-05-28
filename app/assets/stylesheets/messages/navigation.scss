@@ -25,7 +25,7 @@ nav {
         bottom: -36px;
         opacity: 0;
         visibility: hidden;
-        transition: bottom 200ms ease 0s;
+        transition: bottom 200ms ease 50ms, opacity 200ms ease 50ms;
     }
 
     &.hover:hover::before {
@@ -33,7 +33,7 @@ nav {
             bottom: -26px;
             opacity: 1;
             visibility: visible;
-            transition: bottom 200ms ease 0s;
+            transition: bottom 200ms ease 50ms, opacity 200ms ease 50ms;
     }
 
     ul {
@@ -105,6 +105,21 @@ nav {
             
         }
     }
+}
+.top-nav .notifications.hover::before {
+    left: 0;
+}
+.top-nav ul.render-notifications {
+    right: -40px;
+}
+.top-nav .notifications.hover:last-child ul.render-notifications{
+    right: -10px;
+}
+.top-nav nav.hover:hover > ul {
+    top:10px
+}
+.top-nav nav.hover > ul {
+    top:15px
 }
 // changes for header nav
 nav.menu {

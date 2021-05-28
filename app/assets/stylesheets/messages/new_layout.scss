@@ -1,4 +1,4 @@
-.header {
+.dashboard.header, .main.header {
     background-color: #2185D0;
     display: block;
     color: white;
@@ -14,6 +14,135 @@
         }
     }
 }
+.main.header {
+    .top-nav {
+       background: var(--main-darker-color);
+    }
+    a {
+        color: white;
+    }
+    ul {
+        list-style: none;
+        padding-right: 25px;
+        &.float-left {
+            display: inline-block;
+            padding: 0;
+            margin: 5px 0;
+            font-size: 11px;
+            line-height: 15px;
+            li {
+                float: left;
+                margin: 0 15px;
+                &::after {
+                    content: "|";
+                    position: relative;
+                    right: -15px;
+                }
+                &:last-child::after {
+                    content: "";
+                }
+            }
+        }
+    
+    }
+    .float-right {
+        float: right;
+        margin-right: 10px;
+    }
+    .notifications {
+        width: 20px;
+        height: 20px;
+        margin: 4px 10px;
+        header {
+            position: relative;
+            height: 0;
+            top: 0;
+            .svg-inline--fa {
+                margin: 0;
+            }
+        }
+        &:hover::before {
+            z-index: 99;
+        }
+    }
+    .render-notifications {
+        z-index: 100;
+    }
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 78px;
+        ul {
+            list-style: none;
+            text-align: end;
+            li {
+                display: inline-block;
+                margin: 0 15px;
+            }
+        }
+        .logo {
+            width: fit-content;
+            margin-left: 25px;
+        }
+        .search{
+            text-align: center;
+            input {
+                width: 342px;
+            }
+            .text {
+
+            }
+            .button {
+                color: white;
+                background: var(--secondary-color);
+                &:hover {
+                    background: var(--secondary-darker-color);
+                }
+            }
+        }
+        & > * {
+            width: 33.3%;
+        }
+    }
+    .bottom-nav {
+        height: 46px;
+        background: white;
+        text-align: center;
+        ul {
+            
+            li {
+                display: inline-block;
+                margin:15px
+            }
+        }
+        
+        a {
+            color: var(--lighter-text-color);
+            position: relative;
+            &::after {
+                content: "";
+                    position: absolute;
+                    bottom: -3px;
+                    left: -10%;
+                    width: 120%;
+                    opacity: 0;
+                    height: 1px;
+                    background: var(--lighter-text-color);
+                    transition: bottom 300ms ease 0s, opacity 300ms ease 0s;
+            }
+            &:hover {
+                color: var(--main-text-color);
+                &::after {
+                    bottom: -7px;
+                    opacity: 1;
+                    transition: bottom 200ms ease 0s, opacity 200ms ease 0s;
+                }
+            }
+        }
+    }
+}
+
 .account-menu {
     display: flex!important;
     align-items: center;

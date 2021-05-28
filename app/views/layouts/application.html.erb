@@ -20,7 +20,67 @@
     <% end %>
     
     <!-- Header -->
-    <div id="header" class="ui blue inverted segment">
+    <header class="main header">
+      <div class="top-nav">
+        <ul class="float-left">
+          <li><a href="">Help</a></li>
+          <li><a href="">How to Buy</a></li>
+          <li><a href="">How to Sell</a></li>
+        </ul>
+        <div class="float-right">
+            <!-- Messages Notifications -->
+            <%= render partial: 'notifications/message_notifications' %>
+            <!-- Notifications -->
+            <%= render partial: 'notifications/notifications' %>
+            <!-- cart -->
+            <%= render partial: 'notifications/cart_notifications' %>
+            
+        </div>
+      </div>
+
+      <div class="main-nav">
+        <div class="logo-content">
+          <a href="<%= root_path %>" class="logo">
+            <%= image_tag asset_path('logo_white.png')%>
+          </a>
+        </div>
+        <div class="search">
+          <form action="">
+            <div class="ui action input">
+              <input type="text" placeholder="Search...">
+              <select class="ui compact selection dropdown">
+                <option value="all">All</option>
+                <option selected="" value="All Categories">All Categories</option>
+                <option value="products">Truck</option>
+              </select>
+              <div class="ui button">Search</div>
+            </div>
+          </form>
+        </div>
+        <ul>
+          <% if current_user.present? %>
+            <li><a href="">Create Listing</a></li>
+            <li><a href="">Watchlist</a></li>
+            <li><a href="">My Account</a></li>
+          <% else %>
+            <li><a href="<%= new_user_registration_path %>" class="ui inverted button sign-up">Sign UP</a></li>
+            <li><a href="<%= new_user_session_path %>" class="ui primary button sign-in">Sign In</a></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="bottom-nav">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Auction</a></li>
+          <li><a href="">Buy it Now</a></li>
+          <li><a href="">Deals</a></li>
+          <li><a href="">Categories</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div id="header" class="ui blue inverted segment" style="visibility: hidden; display: none;">
       <div class="logo">
           <%= image_tag asset_path('cashfreightlogo.png')%>
           <a class="website" href="<%= root_path%>">cashfreight.com</a>
@@ -31,22 +91,6 @@
           <input type="text" name="query" id="query" placeholder="Search...">
           <input type="submit" value="Search" data-disable-with="Search"  style="display: none;">
       </form>
-      <div class="icons">
-
-          <!-- messages notifications -->
-
-            <%= render partial: 'notifications/message_notifications' %>
-          <!-- Notifications -->
-            <%= render partial: 'notifications/notifications' %>
-
-          <!-- Menu -->
-          <div id="menu" class="ui inverted icon top right pointing dropdown button">
-            <i class="bars icon"></i>
-            <!-- render partial  _menu.html.erb -->
-            <%= render partial: 'layouts/menu' %>
-            <!-- end render -->
-          </div>
-      </div>
   </div>
   <!-- end Header -->
 
