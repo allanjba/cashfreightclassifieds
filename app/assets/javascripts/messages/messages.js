@@ -26,6 +26,8 @@ $( document ).on('turbolinks:load', function() {
 
   $('#close-conversation').click(function() {
     $(".conversation.container").css("left", "100vw");
+    $(".conversation.container").css("height", "100%");
+    $(".conversation.container").css("width", "0");
   });
 
   // $('.message-item').click(function() {

@@ -76,9 +76,11 @@
         background: white;
         // right: -100vw;
         width: 100%;
+        height: auto;
         margin: 0;
         left: 100vw;
-        transition: left 200ms ease 0s; 
+        overflow: hidden;
+        transition: left 200ms ease 0s, height 200ms ease 200ms, width 200ms ease 0s; 
         .message-input {
             width: 100vw;
         }
