@@ -3,4 +3,5 @@
 <li><a href="<%= my_watchlist_path %>"><i class="far fa-heart"></i>Watch list</a></li>
 <li><a href="#"><i class="far fa-wallet"></i>Wallet</a></li>
 <li><a href="#"><i class="far fa-cog"></i>Settings</a></li>
-<li><a href="<%= destroy_user_session_path %>"><i class="far fa-sign-out-alt"></i>Logout</a></li>
+<li><%= link_to  destroy_user_session_path, :method => :delete do %><i class="far fa-sign-out-alt"></i>Logout<% end %></li>
+

@@ -1,3 +1,19 @@
+@media screen and (max-width: 1300px) {
+    // inbox
+    .left-sidebar{
+        width: 30%;
+    }
+    .conversation.container {
+        margin: 0 0 0 30%;
+    }
+    .conversation.container, .conversation.container .message-input{
+        width: 70%;
+    }
+    .right-sidebar {
+        right: -20%;
+
+    }
+}
 @media screen and (max-width: 600px) {
 
     .account-menu {

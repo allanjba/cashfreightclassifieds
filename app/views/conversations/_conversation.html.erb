@@ -21,3 +21,17 @@
         
     <% end %>
 </div>
+<script>
+     
+    $(window).on('turbolinks:load resize', function(){
+        var win = $(this);
+         if (win.width() <= 600) { 
+            $(".conversation.container").css("left", "0");
+         }
+    });
+    $(window).on('turbolinks:load', function(){
+        document.getElementById("conversation-id").lastElementChild.scrollIntoView();
+    });
+   
+    
+</script>

@@ -28,12 +28,11 @@ $( document ).on('turbolinks:load', function() {
     $(".conversation.container").css("left", "100vw");
   });
 
-  $('.message-item').click(function() {
-    $(".user.info").html("");
-    $("#conversation-content").html("Loading");
-    $(".conversation.container").css("left", "0");
-    
-  });
+  // $('.message-item').click(function() {
+  //   $(".user.info").html("");
+  //   $("#conversation-content").html("Loading");
+  //   $(".conversation.container").css("left", "0");
+  // });
   
   
   
