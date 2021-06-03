@@ -1,6 +1,12 @@
 // application 
+// load js fontawesome for pseudo elements
+window.FontAwesomeConfig = {
+  searchPseudoElements: true
+}
 
 $( document ).on('turbolinks:load', function() {
+
+  
 
   // open main menu on mobile
   $('.nav-icon').click( function(){

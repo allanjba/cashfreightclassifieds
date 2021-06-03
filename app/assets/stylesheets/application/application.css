@@ -1,4 +1,9 @@
  /* added styles */
+ .container {
+    padding: 20px;
+    width: 100vw;
+    overflow: hidden;
+  }
 .saved, .saved a {
   color: #2185d0!important;
 }
@@ -373,6 +378,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     .ui.card {
         margin: 0;
     }
+
     #adsContainer {
         margin-top: 10%;
     }

@@ -1,4 +1,10 @@
 // Messages 
+
+// load js fontawesome for pseudo elements
+window.FontAwesomeConfig = {
+  searchPseudoElements: true
+}
+
 $( document ).on('turbolinks:load', function() {
 
   console.log("Messages");
