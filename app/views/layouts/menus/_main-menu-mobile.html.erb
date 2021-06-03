@@ -1,0 +1,14 @@
+
+<div class="nav-icon ">
+  <i class="far fa-bars"></i>
+</div>
+<ul>
+  <% if current_user.present? %>
+    <li><a href="">Create Listing</a></li>
+    <li><a href="">Watchlist</a></li>
+    <li><a href="">My Account</a></li>
+  <% else %>
+    <li><a href="<%= new_user_registration_path %>" class="ui inverted button sign-up">Sign UP</a></li>
+    <li><a href="<%= new_user_session_path %>" class="ui primary button sign-in">Sign In</a></li>
+  <% end %>
+</ul>   

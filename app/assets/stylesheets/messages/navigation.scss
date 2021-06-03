@@ -184,6 +184,17 @@ nav.notifications {
     }
     
 }
+.main.header .top-nav nav.hover{
+    & > ul {
+        top: 30px;
+    }
+    &:hover > ul {
+        top: 25px;
+    }
+}
+#cart-notification-menu ul {
+    right: -15px;
+}
 
 // mobile menu
 nav.mobile {

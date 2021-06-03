@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'mobile', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,11 @@
     <!-- Header -->
     <header class="main header">
       <div class="top-nav">
+        <div class="logo-mobile">
+          <a href="<%= root_path %>" class="logo">
+            <%= image_tag asset_path('logo_white.png')%>
+          </a>
+        </div>
         <ul class="float-left">
           <li><a href="">Help</a></li>
           <li><a href="">How to Buy</a></li>
@@ -34,7 +40,8 @@
             <%= render partial: 'notifications/notifications' %>
             <!-- cart -->
             <%= render partial: 'notifications/cart_notifications' %>
-            
+            <!-- mobile menu -->
+            <nav id='top-nav-mobile' class="main nav mobile "><%= render partial: 'layouts/menus/main-menu-mobile' %></nav>
         </div>
       </div>
 
@@ -44,29 +51,12 @@
             <%= image_tag asset_path('logo_white.png')%>
           </a>
         </div>
-        <div class="search">
-          <form action="">
-            <div class="ui action input">
-              <input type="text" placeholder="Search...">
-              <select class="ui compact selection dropdown">
-                <option value="all">All</option>
-                <option selected="" value="All Categories">All Categories</option>
-                <option value="products">Truck</option>
-              </select>
-              <div class="ui button">Search</div>
-            </div>
-          </form>
-        </div>
-        <ul>
-          <% if current_user.present? %>
-            <li><a href="">Create Listing</a></li>
-            <li><a href="">Watchlist</a></li>
-            <li><a href="">My Account</a></li>
-          <% else %>
-            <li><a href="<%= new_user_registration_path %>" class="ui inverted button sign-up">Sign UP</a></li>
-            <li><a href="<%= new_user_session_path %>" class="ui primary button sign-in">Sign In</a></li>
-          <% end %>
-        </ul>
+        <!-- Search Bar -->
+        <%= render partial: 'layouts/elements/search_bar' %>
+        <!-- Main mebu -->
+        <%= render partial: 'layouts/menus/main-menu' %>
+        <!-- Main menu mobile -->
+        <div id='main-nav-mobile' class="main nav mobile"><%= render partial: 'layouts/menus/main-menu-mobile' %></div>
       </div>
 
       <div class="bottom-nav">

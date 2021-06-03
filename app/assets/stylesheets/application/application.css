@@ -49,13 +49,13 @@
     color: #DCD410;
 }
 
-#search {
+/* #search {
     width: 75%;
     height: 50%;
     margin-top: 4%;
     margin-right: 10%;
     margin-left: 2%;
-}
+} */
 
 .icons {
     display: flex;
@@ -105,12 +105,12 @@ and (-webkit-min-device-pixel-ratio: 3) {
         padding: 1em;
     }
     img {
-        width: 130px;
+        width: 118px;
     }
-    #search {
+    /* #search {
         margin-top: 11%;
         margin-right: 0;
-    }
+    } */
 }
 
 /* Portrait */
@@ -124,11 +124,11 @@ and (orientation: portrait) {
         padding: 1em;
     }
     img {
-        width: 130px;
+        width: 180px;
     }
-    #search {
+    /* #search {
         margin-top: 11%;
-        margin-right: 0;
+        margin-right: 0; */
     }
 }
 
@@ -143,12 +143,12 @@ and (orientation: landscape) {
         padding: 1em;
     }
     img {
-        width: 130px;
+        width: 118px;
     }
-    #search {
+    /* #search {
         margin-top: 11%;
         margin-right: 0;
-    }
+    } */
 }
 
 /* -------- Detail page styling ----------- */
@@ -328,12 +328,12 @@ and (max-width: 767px) {
   width: 340px;
 }
 img {
-  width: 130px;
+  width: 118px;
 }
-#search {
+/* #search {
   margin-top: 11%;
   margin-right: 0;
-}
+} */
 }
 
 /* ----------- Tablet or Smaller Desktop ----------- */

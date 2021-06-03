@@ -88,12 +88,13 @@ $( document ).on('turbolinks:load', function() {
   }
   // force left for menu on mobile
   function offsetNavigationList() {
-    $('ul.mobile').each(function(index) {
-      $(this ).offset({top:48,left:0});
+    $('.render-notifications.mobile').each(function(index) {
+      $(this ).offset({left:0});
     });
   }
   function removeInlineStyles() {
     $('.dashboard.header ul').removeAttr("style");
+    $('.main.header ul').removeAttr("style");
   }
   function closeRightSidebar() {
     $(".right-sidebar").css("left", "100%");

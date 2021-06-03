@@ -1,0 +1,17 @@
+<div class="search">
+    <form action="/" accept-charset="UTF-8" method="get" id="search">
+      <div class="ui action input">
+        <input name="utf8" type="hidden" value="✓">
+        <input type="text" name="query" id="query" placeholder="Search...">
+        <select class="ui compact selection dropdown">
+          <option selected="" value="All Categories">All Categories</option>
+
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+          
+        </select>
+        <button type="submit" class="ui button"><span>Search</span><i class="far fa-search"></i></button>
+      </div>
+    </form>
+</div>
