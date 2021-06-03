@@ -1,8 +1,8 @@
 <ul class="main nav">
     <% if current_user.present? %>
-      <li><a href="">Create Listing</a></li>
-      <li><a href="">Watchlist</a></li>
-      <li><a href="">My Account</a></li>
+      <li><%= link_to 'Create Listing', new_product_path%></li>
+      <li><%= link_to 'Watchlist', my_watchlist_path%></li>
+      <li><%= link_to 'My Account', my_account_path%></li>
     <% else %>
       <li><a href="<%= new_user_registration_path %>" class="ui inverted button sign-up">Sign UP</a></li>
       <li><a href="<%= new_user_session_path %>" class="ui primary button sign-in">Sign In</a></li>

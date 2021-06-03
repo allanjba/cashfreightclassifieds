@@ -6,7 +6,7 @@
         <select class="ui compact selection dropdown">
           <option selected="" value="All Categories">All Categories</option>
 
-          <% @categories.each do |category| %>
+          <% Category.all.each do |category| %>
             <option value="<%= category.id %>"><%= category.name %></option>
           <% end %>
           

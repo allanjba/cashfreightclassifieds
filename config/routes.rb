@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  
+  # static Pages
+  get 'pages/index'
+  get 'help', to: 'pages#help'
+  get 'how-to-buy', to: 'pages#how_to_buy'
+  get 'how-to-sell', to: 'pages#how_to_sell'
+
   get 'my-watchlist', to: 'watchlist#index'
   get 'my-listings', to: 'mylistings#index'
   get 'favorites/update'
@@ -16,6 +21,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:show, :edit, :update, :destroy]
+  get 'my-account', to: 'users#my_account'
 
   resources :conversations do
     resources :messages 

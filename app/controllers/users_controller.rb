@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
     before_action :require_permission, only: [:edit]
 
+    def my_account
+        @user = current_user
+    end
+
     def show
         @user = User.find(params[:id])
     end

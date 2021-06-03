@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: %i[:edit, :update, :destroy]
 
   def index
-      @categories = Category.all
     if params[:query].present?
       @products = Product.search(params[:query])
       @results = params[:query]
