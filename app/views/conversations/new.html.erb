@@ -1,9 +1,30 @@
-<h1> New Conversation </h1>
 
-<%=  form_tag conversations_path, method: :post do  %>
-    <%=  hidden_field_tag :user_id, params[:user_id] %>
-    <p> Subject : <%= text_field_tag :subject  %></p>
-    <p> Message: <%= text_area_tag :body, '', class: 'messageField' %></p>
-    <%= submit_tag "Send Message", class: 'ui primary button' %>
+<div id="conversation-id" class="inbox-messages" data-conversation-id="">
+    
+</div>
 
-<% end %>
+
+<div class="message-input">
+    <!-- add remote true later for ajax-->
+    <%= form_tag conversations_path, method: :post,  id: "message-form"  do %>
+        <%=  hidden_field_tag :user_id, params[:user_id] %>
+        <%= text_field_tag :body, '', class: 'field' %>
+        <span class="textarea" role="textbox" contenteditable id='span-body'></span>
+        <div class="buttons">
+            <i id="attach" class="far fa-paperclip"></i>
+            <%= submit_tag "Send", class: 'button' %>
+        </div>
+        
+    <% end %>
+</div>
+<script>
+    $(window).on('turbolinks:load resize', function(){
+        var win = $(this);
+         if (win.width() <= 600) { 
+            $(".conversation.container").css("left", "0");
+         }
+    });
+    $(window).on('turbolinks:load', function(){
+        document.getElementById("conversation-id").lastElementChild.scrollIntoView();
+    });
+</script>

@@ -18,7 +18,7 @@
                 <%= user.name %> 
             </div>
             <div class="subject">
-                <%= conversation.subject %>
+                <%= conversation.receipts.last.message.body[0...30] %><%= "..." if conversation.receipts.last.message.body.size > 29 %>
             </div>
         </div>
         <div class="date"><%= sent_at(conversation) %></div>

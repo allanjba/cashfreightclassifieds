@@ -1,5 +1,5 @@
-<% if @conversation.present? %>
-    <% user = from(@conversation, current_user )%>
+<% if @conversation.present? || params[:user_id].present? %>
+    <% @conversation.present? ? user = from(@conversation, current_user ) :  user = User.find(params[:user_id])%>
     <div class="bread-nav">
         <div class="bread-left">
             <!-- onclick needs to load with the buttom -->

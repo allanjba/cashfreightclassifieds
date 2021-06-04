@@ -129,24 +129,28 @@ nav.menu {
         top: 21px;
     }
 
-    &:hover  header::after {
+    &:hover  header svg {
         transform: rotateX(180deg);
-        top: 0;
+        top: 4px;
     }
 
     header {
         position: absolute;
         height: 37px;
-        top: -2px;
+        svg {
+            display: inline-block;
+            position: relative;
+            margin: 0 2px;
+            top: 4px;
+            width: 15px!important;
+            height: 20px!important;
+        }
     }
 
     header:after {
         font-family: "Font Awesome 5 Pro";
         content: "\f107";
-        margin: 5px;
-        display: inline-block;
-        position: relative;
-        top: 2px;
+        display: none;
     }
 }
 nav.notifications {

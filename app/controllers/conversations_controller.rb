@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 
     def create
         recipient = User.find(params[:user_id])
-        receipt = current_user.send_message(recipient, params[:body], params[:subject])  
+        receipt = current_user.send_message(recipient, params[:body], "no-subject")  
         redirect_to conversation_path(receipt.conversation)
         # deliver methods
         MessageNotification.with({conversation: receipt.conversation.id, user: current_user}).deliver_later(from(receipt.conversation, current_user))
